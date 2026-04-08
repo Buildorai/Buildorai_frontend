@@ -60,41 +60,49 @@ export default function Features() {
           badge="Features"
         />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-surface/30 p-10 transition-all hover:border-primary/40 hover:bg-surface/50 hover:-translate-y-2"
+              transition={{ duration: 0.7, delay: index * 0.15 }}
+              className="group relative flex min-h-[400px] flex-col overflow-hidden rounded-[3rem] border border-white/5 bg-[#020617] transition-all hover:border-primary/30 hover:-translate-y-2 shadow-2xl hover:shadow-primary/10"
             >
-              {/* Subtle background decorative index */}
-              <div className="absolute top-4 right-8 text-7xl font-black text-white/[0.03] group-hover:text-primary/[0.05] transition-colors pointer-events-none">
-                0{index + 1}
+              {/* Upper Section: Decorative Graphic */}
+              <div className="relative h-48 w-full overflow-hidden">
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
+                  style={{ backgroundImage: `url('/feature_bg_blue.png')` }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent" />
+                
+                {/* Decorative Grid Overlay */}
+                <div className="absolute inset-0 opacity-10" 
+                     style={{ backgroundImage: 'radial-gradient(circle, rgba(14,165,233,0.3) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
               </div>
 
-              {/* Dynamic light glow on hover */}
-              <div className={`absolute -inset-2 rounded-[2.5rem] ${feature.bgColor} opacity-0 group-hover:opacity-10 blur-2xl transition-opacity`} />
-
-              <div className={`relative mb-8 inline-flex items-center justify-center rounded-2xl border border-white/10 ${feature.bgColor} p-4 ${feature.color} shadow-inner`}>
-                <feature.icon size={30} strokeWidth={1.5} />
-                <div className={`absolute inset-0 -z-10 rounded-2xl ${feature.bgColor} blur-xl opacity-30`} />
+              {/* Icon Container: Centered on the boundary */}
+              <div className="absolute left-10 top-[160px] z-10 mb-5">
+                <div className="flex h-16 w-16 items-center justify-center rounded-[1.2rem] bg-primary text-white shadow-xl scale-100 group-hover:scale-110 transition-transform duration-300 shadow-primary/20">
+                  <feature.icon size={32} strokeWidth={2} />
+                </div>
               </div>
 
-              <h3 className="relative mb-4 text-2xl font-bold text-white tracking-tight group-hover:text-primary transition-colors">
-                {feature.title}
-              </h3>
-              
-              <p className="relative mb-6 text-text-secondary text-base leading-relaxed group-hover:text-text-primary transition-colors">
-                {feature.description}
-              </p>
-
-              {/* Hover Action Indicator */}
-              <div className="relative flex items-center gap-2 text-sm font-bold text-primary opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                Performance Optimized <ArrowRight size={16} />
+              {/* Lower Section: Content */}
+              <div className="flex flex-col p-10 pt-10 pb-0!">
+                <h3 className="mb-4 text-2xl font-bold text-white tracking-tight leading-tight group-hover:text-primary transition-colors">
+                  {feature.title}
+                </h3>
+                
+                <p className="mb-6 text-[#94A3B8] text-base leading-relaxed line-clamp-3">
+                  {feature.description}
+                </p>
               </div>
+
+              {/* Decorative Glow */}
+              <div className={`absolute -bottom-24 -right-24 h-48 w-48 rounded-full bg-primary/20 blur-[100px] opacity-0 group-hover:opacity-40 transition-opacity`} />
             </motion.div>
           ))}
         </div>
