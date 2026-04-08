@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, Send, MessageSquare, HelpCircle } from "lucide-react";
+import { Plus, Minus, Send, Mail, Phone, MapPin } from "lucide-react";
 import Heading from "../ui/Heading";
 
 const faqItems = [
@@ -65,6 +65,13 @@ export default function ContactFAQ() {
   return (
     <section id="contact" className="bg-background py-24 md:py-32">
       <div className="container mx-auto max-w-7xl px-8 md:px-20">
+        <Heading 
+          title={<>Get in Touch & <span className="text-primary">FAQ</span></>}
+          description="Have questions or ready to start your journey? Our team is here to help you scale your engineering performance."
+          badge="Contact & Help"
+          align="center"
+          className="mb-16"
+        />
         <div className="grid gap-16 lg:grid-cols-2">
           
           {/* Left Column: Contact Form */}
@@ -74,13 +81,7 @@ export default function ContactFAQ() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Heading 
-              title={<>Let's Build the <span className="text-primary">Future</span></>}
-              description="Have a project in mind or need enterprise access? Our solution architects are ready to help."
-              badge="Get in Touch"
-              align="left"
-              className="mb-10"
-            />
+
 
             <form className="space-y-6">
               <div className="grid gap-6 sm:grid-cols-2">
@@ -135,13 +136,7 @@ export default function ContactFAQ() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Heading 
-              title={<>Unlocking the <span className="text-primary">Answers</span></>}
-              description="Everything you need to know about the platform's core mechanics and deployment lifecycle."
-              badge="Frequently Asked"
-              align="left"
-              className="mb-10"
-            />
+
 
             <div className="rounded-3xl border border-white/5 bg-surface/20 p-2 backdrop-blur-sm">
               <div className="rounded-[1.4rem] bg-background/50 p-6 md:p-10">
@@ -157,12 +152,35 @@ export default function ContactFAQ() {
               </div>
             </div>
             
-            {/* Visual Accent */}
-            <div className="mt-12 overflow-hidden rounded-3xl border border-primary/20 bg-primary/5 p-6 text-center">
-               <p className="text-sm font-medium text-primary-dark">Still have questions? Join our <span className="font-bold underline cursor-pointer">Discord Community</span></p>
-            </div>
+           
           </motion.div>
 
+        </div>
+        
+        {/* Contact Details Cards */}
+        <div className="mt-20 grid gap-6 md:grid-cols-3">
+          {[
+            { icon: <Mail className="text-white" size={24} />, label: "Email Address", value: "support@.com" },
+            { icon: <Phone className="text-white" size={24} />, label: "Phone Number", value: "+1 (212) 687 0359" },
+            { icon: <MapPin className="text-white" size={24} />, label: "Our Location", value: "430 5th Ave, United States" },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group flex items-center gap-6 rounded-3xl border border-white/5 bg-surface/20 p-8 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-surface/30"
+            >
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary shadow-lg shadow-primary/20 transition-transform group-hover:scale-110">
+                {item.icon}
+              </div>
+              <div className="space-y-1">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary opacity-70">{item.label}</p>
+                <p className="text-sm font-bold text-white md:text-lg tracking-tight">{item.value}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -55,15 +55,24 @@ export default function Blog() {
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
 
   return (
-    <section id="blog" className="bg-background py-24 md:py-32">
-      <div className="container mx-auto max-w-7xl px-8 md:px-20">
+    <section id="blog" className="relative bg-background py-24 md:py-32 overflow-hidden">
+      {/* Premium Background Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Rounded Central Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/15 blur-[130px] opacity-60" />
+        
+        {/* Subtle Background Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+      </div>
+
+      <div className="container relative z-10 mx-auto max-w-6xl px-4">
         <Heading 
-          title={<>Intelligence <span className="text-primary">Insights</span></>}
+          title={<>Intelligence <span className="text-primary italic">Insights</span></>}
           description="Thought leadership at the intersection of AI, hardware optimization, and modern engineering management."
           badge="Blog & Resources"
         />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mt-12">
           {blogs.map((blog) => (
             <motion.div
               key={blog.id}
@@ -72,32 +81,32 @@ export default function Blog() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: blog.id * 0.1 }}
               onClick={() => setSelectedBlog(blog)}
-              className="group cursor-pointer rounded-3xl border border-white/5 bg-surface/30 p-2 transition-all hover:border-primary/30 hover:bg-surface/50"
+              className="group cursor-pointer rounded-3xl border border-white/5 bg-surface/30 p-2 transition-all hover:border-primary/40 hover:bg-surface/50 hover:shadow-2xl hover:shadow-primary/5 shadow-inner"
             >
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl mb-6">
                 <Image
                   src={blog.image}
                   alt={blog.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"
                 />
-                <div className="absolute top-4 left-4 rounded-full bg-primary/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur-md">
+                <div className="absolute top-4 left-4 rounded-full bg-primary/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur-md shadow-lg">
                   {blog.category}
                 </div>
               </div>
               <div className="px-4 pb-6">
-                <div className="mb-3 flex items-center gap-4 text-xs font-medium text-text-secondary">
-                  <span className="flex items-center gap-1"><Calendar size={12} /> {blog.date}</span>
-                  <span className="flex items-center gap-1"><User size={12} /> {blog.author}</span>
+                <div className="mb-3 flex items-center gap-4 text-[11px] font-semibold text-text-secondary uppercase tracking-wider">
+                  <span className="flex items-center gap-1.5"><Calendar size={12} className="text-primary" /> {blog.date}</span>
+                  <span className="flex items-center gap-1.5"><User size={12} className="text-primary" /> {blog.author}</span>
                 </div>
-                <h3 className="mb-4 text-xl font-bold text-white transition-colors group-hover:text-primary leading-tight">
+                <h3 className="mb-4 text-xl font-bold text-white transition-colors group-hover:text-primary leading-tight line-clamp-2">
                   {blog.title}
                 </h3>
-                <p className="mb-6 line-clamp-3 text-sm text-text-secondary leading-relaxed">
+                <p className="mb-6 line-clamp-3 text-sm text-text-secondary leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
                   {blog.excerpt}
                 </p>
-                <div className="flex items-center gap-2 text-sm font-bold text-primary group-hover:gap-3 transition-all">
-                  Read Article <ArrowRight size={16} />
+                <div className="flex items-center gap-2 text-sm font-black text-primary group-hover:gap-4 transition-all uppercase tracking-tighter">
+                  Read Analysis <ArrowRight size={16} />
                 </div>
               </div>
             </motion.div>

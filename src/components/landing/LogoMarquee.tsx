@@ -22,7 +22,7 @@ const LogoMarqueeContent = () => (
 
 export default function LogoMarquee() {
   return (
-    <section className="relative w-full overflow-hidden border-y border-white/5 bg-[#020617] py-3">
+    <section className="relative w-full overflow-hidden  bg-[#020617] py-3">
       {/* Soft masks for edges */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-[#020617] to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-[#020617] to-transparent" />

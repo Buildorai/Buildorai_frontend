@@ -6,6 +6,7 @@ import Architecture from "@/components/landing/Architecture";
 import About from "@/components/landing/About";
 import HowItWorks from "@/components/landing/HowItWorks";
 import DashboardPreview from "@/components/landing/DashboardPreview";
+import Testimonials from "@/components/landing/Testimonials";
 import Blog from "@/components/landing/Blog";
 import Pricing from "@/components/landing/Pricing";
 import ContactFAQ from "@/components/landing/ContactFAQ";
@@ -22,6 +23,7 @@ export default function LandingPage() {
       <Blog />
       <HowItWorks />
       <DashboardPreview />
+      <Testimonials />
       <Pricing />
       <ContactFAQ />
       <Footer />
