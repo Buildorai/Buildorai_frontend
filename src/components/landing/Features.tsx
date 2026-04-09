@@ -68,7 +68,7 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: index * 0.15 }}
-              className="group relative flex min-h-[400px] flex-col overflow-hidden rounded-[3rem] border border-white/5 bg-[#020617] transition-all hover:border-primary/30 hover:-translate-y-2 shadow-2xl hover:shadow-primary/10"
+              className="group relative flex min-h-[400px] flex-col overflow-hidden rounded-[3rem] border border-white/5 bg-[#020617] transition-all duration-700 hover:border-primary/30 hover:-translate-y-2 shadow-2xl hover:shadow-primary/10"
             >
               {/* Upper Section: Decorative Graphic */}
               <div className="relative h-48 w-full overflow-hidden">

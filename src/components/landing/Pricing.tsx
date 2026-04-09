@@ -17,6 +17,7 @@ const plans = [
       "Basic AI Scheduling",
       "Community Support",
       "Public API Access",
+      "Standard Security",
     ],
     cta: "Get Started",
     links: {
@@ -69,8 +70,27 @@ export default function Pricing() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("yearly");
 
   return (
-    <section id="pricing" className="bg-background py-24 md:py-32">
-      <div className="container mx-auto max-w-6xl px-4">
+    <section id="pricing" className="relative bg-[#020617] py-24 md:py-32 overflow-hidden">
+      {/* Premium Sapphire Atmosphere Background */}
+      <div className="absolute inset-0 z-0">
+        {/* Base dark navy */}
+        <div className="absolute inset-0 bg-[#020617]" />
+        
+        {/* Large atmospheric blue nebula glows */}
+        <div className="absolute left-[-10%] top-[-10%] h-[120%] w-[120%] bg-gradient-to-tr from-primary/10 via-[#0369a1]/5 to-transparent" />
+        
+        {/* Soft radial highlights behind the cards */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] w-[1000px] rounded-full bg-primary/10 blur-[150px] opacity-30" />
+        <div className="absolute right-[5%] top-[20%] h-[500px] w-[500px] rounded-full bg-blue-600/5 blur-[120px] opacity-40 mix-blend-screen" />
+        
+        {/* Subtle cyan accent for the high-end look */}
+        <div className="absolute left-[5%] bottom-[10%] h-[400px] w-[400px] rounded-full bg-cyan-500/5 blur-[100px] opacity-20" />
+        
+        {/* Textured grid layer for depth */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+      </div>
+
+      <div className="container relative z-10 mx-auto max-w-6xl px-4">
         <Heading
           title={<>Predictable <span className="text-primary">Pricing</span></>}
           description="Simple plans for every scale. Save up to 20% with annual billing."
@@ -98,13 +118,74 @@ export default function Pricing() {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover="hover"
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`relative flex flex-col rounded-3xl border p-8 transition-all ${plan.highlighted
-                  ? "border-primary bg-primary/5 py-12 shadow-xl shadow-primary/10"
-                  : "border-white/5 bg-surface hover:border-white/10"
+              className={`group relative flex flex-col rounded-3xl border p-8 transition-all duration-500 hover:scale-[1.02] ${plan.highlighted
+                  ? "border-primary/20 bg-primary/5 py-12 shadow-2xl shadow-primary/20 hover:shadow-primary/30"
+                  : "border-white/5 bg-surface hover:shadow-2xl hover:shadow-primary/10"
                 }`}
             >
+              {/* Animated Laser Border Overlay */}
+              <div className="absolute inset-0 pointer-events-none rounded-3xl overflow-hidden">
+                <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  {/* Outer Glow Layer (Left) */}
+                  <motion.path
+                    d="M 50 100 L 10 100 Q 0 100 0 90 L 0 10 Q 0 0 10 0 L 50 0"
+                    fill="none"
+                    stroke="var(--primary)"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    vectorEffect="non-scaling-stroke"
+                    className="opacity-20 blur-[2px]"
+                    initial={{ pathLength: 0 }}
+                    variants={{ hover: { pathLength: 1.1 } }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                  {/* Core Bright Layer (Left) */}
+                  <motion.path
+                    d="M 50 100 L 10 100 Q 0 100 0 90 L 0 10 Q 0 0 10 0 L 50 0"
+                    fill="none"
+                    stroke="var(--primary)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    vectorEffect="non-scaling-stroke"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    variants={{ hover: { pathLength: 1.1, opacity: 1 } }}
+                    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                  
+                  {/* Outer Glow Layer (Right) */}
+                  <motion.path
+                    d="M 50 100 L 90 100 Q 100 100 100 90 L 100 10 Q 100 0 90 0 L 50 0"
+                    fill="none"
+                    stroke="var(--primary)"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    vectorEffect="non-scaling-stroke"
+                    className="opacity-20 blur-[2px]"
+                    initial={{ pathLength: 0 }}
+                    variants={{ hover: { pathLength: 1.1 } }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                  {/* Core Bright Layer (Right) */}
+                  <motion.path
+                    d="M 50 100 L 90 100 Q 100 100 100 90 L 100 10 Q 100 0 90 0 L 50 0"
+                    fill="none"
+                    stroke="var(--primary)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    vectorEffect="non-scaling-stroke"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    variants={{ hover: { pathLength: 1.1, opacity: 1 } }}
+                    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </svg>
+
+                {/* Subtle Inner Pulse Background */}
+                <div className="absolute inset-0 bg-primary/0 transition-all duration-700 group-hover:bg-primary/[0.03]" />
+              </div>
+
               {plan.highlighted && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-wider text-white">
                   Most Popular
@@ -151,7 +232,7 @@ export default function Pricing() {
                 rel="noopener noreferrer"
                 className={`flex h-12 w-full items-center justify-center gap-2 rounded-xl font-semibold transition-all ${plan.highlighted
                     ? "bg-primary text-white hover:bg-primary-dark shadow-md"
-                    : "bg-white/5 text-white hover:bg-primary hover:bg-primary-dark"
+                    : "bg-white/5 text-white hover:bg-primary hover:bg-primary-dark shadow-sm hover:shadow-primary/20"
                   }`}
               >
                 {plan.cta}

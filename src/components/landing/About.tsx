@@ -70,8 +70,19 @@ export default function About() {
                     <div className="text-4xl font-black text-white tracking-tighter">10K<span className="text-primary italic">+</span></div>
                     <div className="mt-1 text-[8px] font-bold uppercase tracking-[0.3em] text-primary/70">Architected Sprints</div>
                     <div className="mt-4 flex -space-x-2">
-                      {[1,2,3].map(i => (
-                        <div key={i} className="h-6 w-6 rounded-full border border-background bg-surface-hover" />
+                      {[
+                        "/images/testimonials/avatar-1.png",
+                        "/images/testimonials/avatar-2.png",
+                        "/images/testimonials/vp-engineering.png"
+                      ].map((src, i) => (
+                        <div key={i} className="relative h-7 w-7 rounded-full border-2 border-surface overflow-hidden shadow-lg">
+                          <Image
+                            src={src}
+                            alt={`Active User ${i + 1}`}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
                       ))}
                     </div>
                   </div>

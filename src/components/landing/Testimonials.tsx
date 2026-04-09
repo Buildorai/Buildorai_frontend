@@ -31,7 +31,7 @@ const testimonials = [
     metric: "Sprint Predictability",
     quote: "Since integrating Buildorai, our delivery dates have never been more accurate. The AI accurately predicts resource needs and avoids coordination traps.",
     author: "Marcus Chen",
-    role: "Lead Architect, TechFlow",
+    role: "Lead Architect",
     image: "/images/testimonials/avatar-2.png"
   }
 ];
@@ -68,8 +68,26 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="bg-background py-24 md:py-32 overflow-hidden">
-      <div className="container mx-auto max-w-7xl px-8 md:px-20">
+    <section className="relative bg-[#020617] py-24 md:py-32 overflow-hidden">
+      {/* Cinematic Abstract Background (Matching User Image) */}
+      <div className="absolute inset-0 z-0">
+        {/* Base dark navy */}
+        <div className="absolute inset-0 bg-[#020617]" />
+        
+        {/* Large fluid blue shapes with overlapping gradients */}
+        <div className="absolute -left-[10%] top-[-10%] h-[120%] w-[120%] bg-gradient-to-br from-primary/20 via-[#0369a1]/10 to-transparent" />
+        
+        {/* Overlapping curved layers using large blurred circles */}
+        <div className="absolute -right-1/4 -top-1/4 h-[800px] w-[800px] rounded-full bg-primary/20 blur-[150px] opacity-40 mix-blend-screen" />
+        <div className="absolute left-1/4 bottom-[-10%] h-[600px] w-[900px] rounded-[100%] bg-blue-600/10 blur-[130px] opacity-40 transform rotate-12" />
+        
+        {/* Subtle cyan accent for the "teal-ish" highlights in the image */}
+        <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-cyan-500/5 blur-[100px] opacity-30" />
+        
+        {/* Textured layer for depth */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+      </div>
+      <div className="container relative z-10 mx-auto max-w-7xl px-8 md:px-20">
         <div className="grid gap-20 lg:grid-cols-2 items-center">
           
           {/* Left Column: Context & Proof */}

@@ -101,7 +101,7 @@ export default function ContactFAQ() {
   };
 
   return (
-    <section id="contact" className="bg-background py-24 md:py-32">
+    <section id="contact" className="relative bg-background py-24 md:py-32 overflow-hidden">
       <div className="container mx-auto max-w-7xl px-8 md:px-20">
         <Heading 
           title={<>Get in Touch & <span className="text-primary">FAQ</span></>}
@@ -239,11 +239,10 @@ export default function ContactFAQ() {
         </div>
         
         {/* Contact Details Cards */}
-        <div className="mt-20 grid gap-6 md:grid-cols-3">
+        <div className="mt-20 grid gap-6 md:grid-cols-2">
           {[
-            { icon: <Mail className="text-white" size={24} />, label: "Email Address", value: "support@.com" },
-            { icon: <Phone className="text-white" size={24} />, label: "Phone Number", value: "+1 (212) 687 0359" },
-            { icon: <MapPin className="text-white" size={24} />, label: "Our Location", value: "430 5th Ave, United States" },
+            { icon: <Mail className="text-white" size={24} />, label: "Email Address", value: "help@buildorai.com" },
+            { icon: <MapPin className="text-white" size={24} />, label: "Our Location", value: "One Sansome Street, San Francisco, CA 94104, USA" },
           ].map((item, index) => (
             <motion.div
               key={index}
@@ -263,6 +262,30 @@ export default function ContactFAQ() {
             </motion.div>
           ))}
         </div>
+        {/* Map Integration */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-20 overflow-hidden rounded-[2.5rem] border border-white/5 bg-surface/20 p-2 shadow-2xl backdrop-blur-sm"
+        >
+          <div className="relative h-[400px] w-full overflow-hidden rounded-[2rem]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.116641551048!2d-122.40348702344719!3d37.79155737198127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085806375f1b231%3A0x86733230559e793a!2sOne%20Sansome%20St%2C%20San%20Francisco%2C%20CA%2094104%2C%20USA!5e0!3m2!1sen!2slk!4v1712658825824!5m2!1sen!2slk"
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) transition-all grayscale(0.2) contrast(1.1)' }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="opacity-80 transition-opacity hover:opacity-100"
+            ></iframe>
+            
+            {/* Subtle Overlay to ensure it feels part of the theme */}
+            <div className="absolute inset-0 pointer-events-none border-[12px] border-surface/30 rounded-[2rem]" />
+          </div>
+        </motion.div>
       </div>
     </section>
   );

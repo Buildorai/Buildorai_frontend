@@ -54,6 +54,18 @@ const blogs: BlogPost[] = [
 export default function Blog() {
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
 
+  // Lock body scroll when modal is open
+  React.useEffect(() => {
+    if (selectedBlog) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedBlog]);
+
   return (
     <section id="blog" className="relative bg-background py-24 md:py-32 overflow-hidden">
       {/* Premium Background Layer */}
@@ -123,68 +135,84 @@ export default function Blog() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedBlog(null)}
-              className="absolute inset-0 bg-background/80 backdrop-blur-xl"
+              className="absolute inset-0 bg-black/10 backdrop-blur-md"
             />
             
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative max-h-full w-full max-w-4xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-surface shadow-2xl overflow-y-auto custom-scrollbar"
+              className="relative max-h-full w-full max-w-4xl overflow-hidden rounded-[2.5rem] border border-primary/20 bg-surface shadow-2xl"
             >
-              {/* Modal Header Image */}
-              <div className="relative h-64 w-full md:h-96">
-                <Image
-                  src={selectedBlog.image}
-                  alt={selectedBlog.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
-                <button
-                  onClick={() => setSelectedBlog(null)}
-                  className="absolute top-6 right-6 flex h-12 w-12 items-center justify-center rounded-full bg-background/50 text-white backdrop-blur-md transition-all hover:bg-primary"
-                >
-                  <X size={24} />
-                </button>
-              </div>
+              {/* Fixed Close Button */}
+              <button
+                onClick={() => setSelectedBlog(null)}
+                className="absolute top-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-background/50 text-white backdrop-blur-md transition-all hover:bg-primary sm:top-8 sm:right-8"
+              >
+                <X size={24} />
+              </button>
 
-              {/* Modal Content */}
-              <div className="p-8 md:p-12">
-                <div className="mb-6 flex flex-wrap items-center gap-6 text-sm font-medium text-text-secondary">
-                  <span className="rounded-full bg-primary/10 px-4 py-1.5 font-bold uppercase tracking-widest text-primary">{selectedBlog.category}</span>
-                  <span className="flex items-center gap-2"><Calendar size={16} /> {selectedBlog.date}</span>
-                  <span className="flex items-center gap-2"><User size={16} /> {selectedBlog.author}</span>
+              <div className="max-h-[85vh] overflow-y-auto blog-scrollbar">
+                <style dangerouslySetInnerHTML={{ __html: `
+                  .blog-scrollbar::-webkit-scrollbar {
+                    width: 6px;
+                  }
+                  .blog-scrollbar::-webkit-scrollbar-track {
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 10px;
+                  }
+                  .blog-scrollbar::-webkit-scrollbar-thumb {
+                    background: var(--primary, #0EA5E9);
+                    border-radius: 10px;
+                  }
+                  .blog-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: var(--primary-dark, #0284C7);
+                  }
+                `}} />
+                
+                {/* Modal Header Image */}
+                <div className="relative h-64 w-full md:h-96">
+                  <Image
+                    src={selectedBlog.image}
+                    alt={selectedBlog.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
                 </div>
-                
-                <h2 className="mb-8 font-heading text-4xl font-bold text-white md:text-5xl leading-tight">
-                  {selectedBlog.title}
-                </h2>
-                
-                <div className="prose prose-invert prose-blue max-w-none">
-                  <p className="text-lg md:text-xl text-text-primary leading-relaxed whitespace-pre-line border-l-4 border-primary pl-8 italic mb-10">
-                    {selectedBlog.excerpt}
-                  </p>
-                  <div className="text-text-secondary text-base md:text-lg leading-relaxed whitespace-pre-line">
-                    {selectedBlog.content}
+
+                {/* Modal Content */}
+                <div className="p-8 md:p-12">
+                  <div className="mb-6 flex flex-wrap items-center gap-6 text-sm font-medium text-text-secondary">
+                    <span className="rounded-full bg-primary/10 px-4 py-1.5 font-bold uppercase tracking-widest text-primary">{selectedBlog.category}</span>
+                    <span className="flex items-center gap-2"><Calendar size={16} /> {selectedBlog.date}</span>
+                    <span className="flex items-center gap-2"><User size={16} /> {selectedBlog.author}</span>
                   </div>
-                </div>
+                  
+                  <h2 className="mb-8 font-heading text-4xl font-bold text-white md:text-5xl leading-tight">
+                    {selectedBlog.title}
+                  </h2>
+                  
+                  <div className="prose prose-invert prose-blue max-w-none">
+                    <p className="text-lg md:text-xl text-text-primary leading-relaxed whitespace-pre-line border-l-4 border-primary pl-8 italic mb-10">
+                      {selectedBlog.excerpt}
+                    </p>
+                    <div className="text-text-secondary text-base md:text-lg leading-relaxed whitespace-pre-line">
+                      {selectedBlog.content}
+                    </div>
+                  </div>
 
-                <div className="mt-12 flex items-center justify-between border-t border-white/5 pt-10">
-                   <div className="flex items-center gap-4">
-                      <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                         <User size={24} />
-                      </div>
-                      <div>
-                         <div className="font-bold text-white">{selectedBlog.author}</div>
-                         <div className="text-xs text-text-secondary">Senior AI Strategist at Buildorai</div>
-                      </div>
-                   </div>
-                   <div className="flex gap-4">
-                      <button className="flex h-12 w-12 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-all hover:bg-primary group">
-                         <Share2 size={20} className="text-text-secondary group-hover:text-white" />
-                      </button>
-                   </div>
+                  <div className="mt-12 flex items-center justify-between border-t border-white/5 pt-10">
+                    <div className="flex items-center gap-4">
+                        <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                          <User size={24} />
+                        </div>
+                        <div>
+                          <div className="font-bold text-white">{selectedBlog.author}</div>
+                          <div className="text-xs text-text-secondary">Senior AI Strategist at Buildorai</div>
+                        </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>

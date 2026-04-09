@@ -8,14 +8,14 @@ import { ArrowRight, Terminal, Activity, Cpu, Globe, Zap } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative flex min-h-[100dvh] w-full flex-col pt-32 pb-20 lg:pb-8">
+    <section id="home" className="relative flex min-h-[100dvh] w-full flex-col pt-32 pb-20 lg:pb-8 overflow-hidden">
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
         <Image 
           src="/hero-ai.png" 
           alt="Engineering Intelligence" 
           fill 
-          className="object-cover opacity-40 brightness-[0.7]"
+          className="object-cover opacity-80 brightness-[0.9]"
           priority
         />
         {/* Cinematic Overlays */}
@@ -65,9 +65,12 @@ export default function Hero() {
                 Get Started with Buildorai
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
-              <button className="flex h-14 items-center rounded-full border border-white/20 bg-white/5 px-8 font-bold text-white transition-all hover:bg-white/10 backdrop-blur-sm">
+              <Link 
+                href="#how-it-works"
+                className="flex h-14 items-center rounded-full border border-white/20 bg-white/5 px-8 font-bold text-white transition-all hover:bg-white/10 backdrop-blur-sm"
+              >
                 Watch Demo
-              </button>
+              </Link>
             </motion.div>
           </div>
 

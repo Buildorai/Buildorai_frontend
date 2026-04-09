@@ -29,8 +29,21 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-background py-24 md:py-32">
-      <div className="container mx-auto max-w-7xl px-8 md:px-20">
+    <section id="how-it-works" className="relative bg-[#020617] py-24 md:py-32 overflow-hidden">
+      {/* Cinematic Blue Gradient Background */}
+      <div className="absolute inset-0 z-0">
+        {/* Base dark navy */}
+        <div className="absolute inset-0 bg-[#020617]" />
+        
+        {/* Large radial glow mimicking the user's image (bottom center/right light source) */}
+        <div className="absolute -bottom-[20%] right-[10%] h-[800px] w-[800px] rounded-full bg-primary/20 blur-[150px] opacity-40" />
+        <div className="absolute -bottom-[10%] left-[20%] h-[600px] w-[600px] rounded-full bg-blue-600/10 blur-[130px] opacity-30" />
+        
+        {/* Subtle grid for depth */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+      </div>
+
+      <div className="container relative z-10 mx-auto max-w-7xl px-8 md:px-20">
         <Heading 
           title={<>Efficiency <span className="text-primary">Demystified</span></>}
           description="See how Buildorai transforms complex engineering workflows into a streamlined, autonomous machine."
@@ -59,7 +72,7 @@ export default function HowItWorks() {
                 </div>
                 <div>
                   <h3 className="mb-3 flex items-center gap-3 text-2xl font-bold text-white tracking-tight">
-                    <step.icon size={20} className="text-primary-dark" />
+                    
                     {step.title}
                   </h3>
                   <p className="text-text-secondary text-base leading-relaxed md:text-lg">

@@ -34,7 +34,7 @@ const Heading: React.FC<HeadingProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-6 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary shadow-[0_0_15px_rgba(14,165,233,0.1)] backdrop-blur-md"
+          className="mb-4 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary shadow-[0_0_15px_rgba(14,165,233,0.1)] backdrop-blur-md"
         >
           <span className="relative flex h-2 w-2 mr-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
