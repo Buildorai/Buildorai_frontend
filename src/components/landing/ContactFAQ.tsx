@@ -3,7 +3,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, Send, Mail, Phone, MapPin } from "lucide-react";
+import { Plus, Minus, Send, Mail, Phone, MapPin, Check } from "lucide-react";
+import { Turnstile } from "@marsidev/react-turnstile";
 import Heading from "../ui/Heading";
 
 const faqItems = [
@@ -60,7 +61,44 @@ const AccordionItem = ({ question, answer, isOpen, onClick }: {
 );
 
 export default function ContactFAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!turnstileToken) {
+      alert("Please complete the security check.");
+      return;
+    }
+
+    setStatus("submitting");
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    // Include Turnstile token for Formspree verification
+    data["cf-turnstile-response"] = turnstileToken;
+
+    try {
+      const response = await fetch("https://formspree.io/f/xzdkqred", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatus("error");
+    }
+  };
 
   return (
     <section id="contact" className="bg-background py-24 md:py-32">
@@ -81,52 +119,95 @@ export default function ContactFAQ() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-
-
-            <form className="space-y-6">
-              <div className="grid gap-6 sm:grid-cols-2">
+            {status === "success" ? (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex flex-col items-center justify-center rounded-3xl border border-primary/20 bg-primary/5 p-12 text-center backdrop-blur-sm"
+              >
+                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/20">
+                  <Check size={40} /> {/* Using Plus rotated as a cross/check or something, wait I'll use Send or Check if available */}
+                </div>
+                <h3 className="mb-2 text-2xl font-bold text-white">Message Sent!</h3>
+                <p className="text-text-secondary">Thank you for reaching out. Our team will get back to you within 24 hours.</p>
+                <button 
+                  onClick={() => setStatus("idle")}
+                  className="mt-8 font-bold text-primary hover:underline"
+                >
+                  Send another message
+                </button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-text-secondary pl-1">Full Name</label>
+                    <input 
+                      required
+                      name="name"
+                      type="text" 
+                      placeholder="John Doe"
+                      className="w-full rounded-2xl border border-white/10 bg-surface/50 p-4 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-text-secondary pl-1">Email Address</label>
+                    <input 
+                      required
+                      name="email"
+                      type="email" 
+                      placeholder="john@company.com"
+                      className="w-full rounded-2xl border border-white/10 bg-surface/50 p-4 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm"
+                    />
+                  </div>
+                </div>
+                
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-text-secondary pl-1">Full Name</label>
-                  <input 
-                    type="text" 
-                    placeholder="John Doe"
-                    className="w-full rounded-2xl border border-white/10 bg-surface/50 p-4 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm"
+                  <label className="text-xs font-bold uppercase tracking-widest text-text-secondary pl-1">Project Type</label>
+                  <select 
+                    name="projectType"
+                    className="w-full rounded-2xl border border-white/10 bg-surface/50 p-4 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm appearance-none"
+                  >
+                    <option className="bg-[#020617]">Strategic AI Deployment</option>
+                    <option className="bg-[#020617]">Resource Optimization</option>
+                    <option className="bg-[#020617]">Custom Coordination Engine</option>
+                    <option className="bg-[#020617]">Enterprise Cloud Transition</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs font-bold uppercase tracking-widest text-text-secondary pl-1">Message</label>
+                  <textarea 
+                    required
+                    name="message"
+                    rows={4}
+                    placeholder="How can we help scale your engineering performance?"
+                    className="w-full rounded-2xl border border-white/10 bg-surface/50 p-4 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm resize-none"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-text-secondary pl-1">Email Address</label>
-                  <input 
-                    type="email" 
-                    placeholder="john@company.com"
-                    className="w-full rounded-2xl border border-white/10 bg-surface/50 p-4 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm"
+
+                <div className="flex justify-center pt-2">
+                  <Turnstile 
+                    siteKey={process.env.NEXT_PUBLIC_CLOUD_FLARE_SITE_KEY || ""} 
+                    onSuccess={(token) => setTurnstileToken(token)}
                   />
                 </div>
-              </div>
-              
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-text-secondary pl-1">Project Type</label>
-                <select className="w-full rounded-2xl border border-white/10 bg-surface/50 p-4 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm appearance-none">
-                  <option className="bg-[#020617]">Strategic AI Deployment</option>
-                  <option className="bg-[#020617]">Resource Optimization</option>
-                  <option className="bg-[#020617]">Custom Coordination Engine</option>
-                  <option className="bg-[#020617]">Enterprise Cloud Transition</option>
-                </select>
-              </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-text-secondary pl-1">Message</label>
-                <textarea 
-                  rows={4}
-                  placeholder="How can we help scale your engineering performance?"
-                  className="w-full rounded-2xl border border-white/10 bg-surface/50 p-4 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm resize-none"
-                />
-              </div>
+                <button 
+                  disabled={status === "submitting"}
+                  className="group mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-primary-dark font-bold text-white shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] hover:shadow-primary/30 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {status === "submitting" ? "Sending Intelligence..." : "Send Intelligent Message"}
+                  <Send size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </button>
 
-              <button className="group mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-primary-dark font-bold text-white shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] hover:shadow-primary/30 active:scale-95">
-                Send Intelligent Message
-                <Send size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </button>
-            </form>
+                {status === "error" && (
+                  <p className="text-center text-sm font-bold text-red-500">
+                    Something went wrong. Please try again later.
+                  </p>
+                )}
+              </form>
+            )}
           </motion.div>
 
           {/* Right Column: FAQ Accordion */}

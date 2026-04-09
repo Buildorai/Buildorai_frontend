@@ -49,7 +49,7 @@ const Heading: React.FC<HeadingProps> = ({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className={`font-heading text-4xl font-bold text-white md:text-5xl lg:text-7xl tracking-tight leading-[1.1] mb-6 max-w-4xl`}
+        className={`font-heading text-4xl font-bold text-white md:text-6xl lg:text-7xl tracking-tight leading-[1.1] mb-6 max-w-4xl [&>span]:font-sans [&>span]:italic`}
       >
         {title}
       </motion.h2>

@@ -9,8 +9,8 @@ import Heading from "../ui/Heading";
 const plans = [
   {
     name: "Starter",
-    priceMonthly: 0,
-    priceYearly: 0,
+    priceMonthly: 18,
+    priceYearly: 14,
     description: "Ideal for individual developers and small teams starting their journey.",
     features: [
       "Up to 3 Projects",
@@ -18,7 +18,11 @@ const plans = [
       "Community Support",
       "Public API Access",
     ],
-    cta: "Start for Free",
+    cta: "Get Started",
+    links: {
+      monthly: "https://buy.stripe.com/test_6oU14m2EmdtHenX9NE5Ne05",
+      yearly: "https://buy.stripe.com/test_4gM9ASdj02P3cfP3pg5Ne04",
+    },
     highlighted: false,
   },
   {
@@ -34,6 +38,10 @@ const plans = [
       "Advanced Security",
     ],
     cta: "Launch Pro",
+    links: {
+      monthly: "https://buy.stripe.com/test_fZu9ASen4fBP3Jj1h85Ne03",
+      yearly: "https://buy.stripe.com/test_7sY00i5Qy9drbbLaRI5Ne02",
+    },
     highlighted: true,
   },
   {
@@ -49,6 +57,10 @@ const plans = [
       "White-glove Onboarding",
     ],
     cta: "Contact Sales",
+    links: {
+      monthly: "https://buy.stripe.com/test_fZuaEW3Iq0GVdjTf7Y5Ne01",
+      yearly: "https://buy.stripe.com/test_28E3cu92Kahv7Zz9NE5Ne00",
+    },
     highlighted: false,
   },
 ];
@@ -59,7 +71,7 @@ export default function Pricing() {
   return (
     <section id="pricing" className="bg-background py-24 md:py-32">
       <div className="container mx-auto max-w-6xl px-4">
-        <Heading 
+        <Heading
           title={<>Predictable <span className="text-primary">Pricing</span></>}
           description="Simple plans for every scale. Save up to 20% with annual billing."
           badge="Pricing"
@@ -88,11 +100,10 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`relative flex flex-col rounded-3xl border p-8 transition-all ${
-                plan.highlighted
+              className={`relative flex flex-col rounded-3xl border p-8 transition-all ${plan.highlighted
                   ? "border-primary bg-primary/5 py-12 shadow-xl shadow-primary/10"
                   : "border-white/5 bg-surface hover:border-white/10"
-              }`}
+                }`}
             >
               {plan.highlighted && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-wider text-white">
@@ -101,7 +112,7 @@ export default function Pricing() {
               )}
 
               <div className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary-dark">
-                 {plan.name}
+                {plan.name}
               </div>
 
               <div className="mb-6 flex items-baseline gap-1">
@@ -134,16 +145,18 @@ export default function Pricing() {
                 ))}
               </div>
 
-              <button
-                className={`flex h-12 w-full items-center justify-center gap-2 rounded-xl font-semibold transition-all ${
-                  plan.highlighted
+              <a
+                href={billingCycle === "monthly" ? plan.links.monthly : plan.links.yearly}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex h-12 w-full items-center justify-center gap-2 rounded-xl font-semibold transition-all ${plan.highlighted
                     ? "bg-primary text-white hover:bg-primary-dark shadow-md"
                     : "bg-white/5 text-white hover:bg-primary hover:bg-primary-dark"
-                }`}
+                  }`}
               >
                 {plan.cta}
                 <ArrowRight size={16} />
-              </button>
+              </a>
             </motion.div>
           ))}
         </div>

@@ -36,7 +36,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="mb-6 font-heading text-6xl font-black tracking-tight text-white sm:text-7xl lg:text-8xl"
+              className="mb-6 font-heading text-6xl font-black tracking-tight text-white sm:text-7xl lg:text-8xl [&>span]:font-sans"
             >
               Unleashing <span className="text-primary italic">Intelligence</span> in Every Project
             </motion.h1>

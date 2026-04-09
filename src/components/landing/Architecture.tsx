@@ -23,8 +23,43 @@ const NodeIcon = ({ icon: Icon, delay = 0 }: { icon: any; delay?: number }) => (
 export default function Architecture() {
   return (
     <section className="relative overflow-hidden bg-background py-24 md:py-32">
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -z-10 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[120px]" />
+      {/* Background Glow Layers */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* The main diagonal beam */}
+        <motion.div 
+          animate={{ 
+            opacity: [0.4, 0.6, 0.4],
+            scale: [1, 1.1, 1],
+            rotate: [0, 2, 0]
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-[20%] -left-[20%] w-[150%] h-[150%] opacity-50"
+          style={{ 
+            background: 'conic-gradient(from 135deg at 15% 15%, transparent 0deg, rgba(14,165,233,0.15) 15deg, rgba(14,165,233,0.3) 25deg, rgba(14,165,233,0.15) 35deg, transparent 50deg)',
+            filter: 'blur(100px)'
+          }} 
+        />
+        
+        {/* Soft highlight beam (the "ray" effect) */}
+        <motion.div 
+          animate={{ 
+            opacity: [0.2, 0.4, 0.2],
+            x: [0, 20, 0]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute -top-[10%] -left-[10%] w-[120%] h-[120%] opacity-30"
+          style={{ 
+            background: 'conic-gradient(from 140deg at 10% 10%, transparent 0deg, rgba(255,255,255,0.05) 5deg, rgba(14,165,233,0.1) 10deg, transparent 20deg)',
+            filter: 'blur(60px)'
+          }} 
+        />
+
+        {/* Ambient background glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(14,165,233,0.1),transparent_70%)]" />
+        
+        {/* Noise overlay for texture */}
+        <div className="noise-overlay !opacity-[0.08]" />
+      </div>
 
       <div className="container mx-auto max-w-7xl px-8 md:px-20">
         <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -68,7 +103,7 @@ export default function Architecture() {
               href="/docs"
               className="group inline-flex items-center gap-2 rounded-full bg-surface-hover px-8 py-4 font-bold text-white transition-all hover:bg-white/10 hover:shadow-lg"
             >
-              Explore Documentation
+              Explore Product
               <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
