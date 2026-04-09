@@ -8,7 +8,7 @@ import { ArrowRight, Terminal, Activity, Cpu, Globe, Zap } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[100dvh] w-full flex-col pt-32 pb-20 lg:pb-8">
+    <section id="home" className="relative flex min-h-[100dvh] w-full flex-col pt-32 pb-20 lg:pb-8">
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
         <Image 

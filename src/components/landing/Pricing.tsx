@@ -57,7 +57,7 @@ export default function Pricing() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("yearly");
 
   return (
-    <section className="bg-background py-24 md:py-32">
+    <section id="pricing" className="bg-background py-24 md:py-32">
       <div className="container mx-auto max-w-6xl px-4">
         <Heading 
           title={<>Predictable <span className="text-primary">Pricing</span></>}

@@ -3,17 +3,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  Home, 
-  BarChart3, 
-  LayoutGrid, 
-  Settings, 
-  Database, 
-  Terminal,
+import {
+  Home,
+  BarChart3,
+  LayoutGrid,
+  Settings,
+  Database,
   ChevronLeft,
   ChevronRight,
   LogOut
 } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -35,17 +35,27 @@ export default function Sidebar() {
     >
       <div className="flex h-20 items-center justify-between px-6">
         {!collapsed && (
-          <Link href="/" className="flex items-center gap-2 text-xl font-bold text-white font-heading">
-            <div className="rounded-lg bg-primary p-1 text-white">
-              <Terminal size={20} />
-            </div>
+          <Link href="/" className="flex items-center gap-3 text-xl font-bold text-white font-heading transition-opacity hover:opacity-80">
+            <Image
+              src="/logo.svg"
+              alt="Buildorai Logo"
+              width={28}
+              height={28}
+              className="h-7 w-auto"
+            />
             Buildorai
           </Link>
         )}
         {collapsed && (
-          <div className="rounded-lg bg-primary p-1 text-white mx-auto">
-            <Terminal size={24} />
-          </div>
+          <Link href="/" className="mx-auto transition-opacity hover:opacity-80">
+            <Image
+              src="/logo.svg"
+              alt="Buildorai Logo"
+              width={24}
+              height={24}
+              className="h-6 w-auto"
+            />
+          </Link>
         )}
         <button
           onClick={() => setCollapsed(!collapsed)}
@@ -62,11 +72,10 @@ export default function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-3 rounded-xl px-4 py-3 transition-all ${
-                active 
-                  ? "bg-primary/10 text-primary" 
+              className={`flex items-center gap-3 rounded-xl px-4 py-3 transition-all ${active
+                  ? "bg-primary/10 text-primary"
                   : "text-text-secondary hover:bg-white/5 hover:text-white"
-              }`}
+                }`}
             >
               <item.icon size={20} />
               {!collapsed && <span className="font-medium">{item.name}</span>}

@@ -59,3 +59,38 @@ h1, h2, h3, h4, h5, h6 {
 html {
   scroll-behavior: smooth;
 }
+/* Animated Border Animation */
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.animated-border-box {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.animated-border-box::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  filter: blur(10px);
+  background-image: linear-gradient(var(--primary), #FFF);
+  animation: rotate 3s linear infinite;
+}
+
+.animated-border-content {
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 1;
+}

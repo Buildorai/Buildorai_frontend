@@ -1,12 +1,13 @@
 // === Landing: Footer component ===
 import Link from "next/link";
-import { Terminal, Send } from "lucide-react";
+import { Send } from "lucide-react";
+import Image from "next/image";
 
 const SocialIcon = ({ path, size = 20, viewBox = "0 0 24 24" }: { path: string, size?: number, viewBox?: string }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox={viewBox} 
+  <svg
+    width={size}
+    height={size}
+    viewBox={viewBox}
     fill="currentColor"
     className="text-text-secondary transition-colors hover:text-white cursor-pointer"
   >
@@ -21,10 +22,10 @@ const YoutubeIcon = (props: any) => <SocialIcon {...props} path="M22.54 6.42a2.7
 
 
 const PinterestIcon = ({ size = 20 }: { size?: number }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
     fill="currentColor"
     className="text-text-secondary transition-colors hover:text-white cursor-pointer"
   >
@@ -36,7 +37,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/5 bg-background pt-20 pb-10">
       <div className="container mx-auto max-w-6xl px-4 text-center sm:text-left">
-        
+
         {/* Newsletter Section */}
         <div className="mb-20 rounded-[2.5rem] border border-white/5 bg-surface/20 p-8 md:p-14 backdrop-blur-sm overflow-hidden relative group">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
@@ -50,8 +51,8 @@ export default function Footer() {
             </div>
             <div className="w-full max-w-md">
               <form className="flex flex-col sm:flex-row gap-4">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   placeholder="your@email.com"
                   className="h-16 flex-1 rounded-2xl border border-white/10 bg-background/50 px-6 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm font-medium"
                 />
@@ -64,7 +65,7 @@ export default function Footer() {
               </p>
             </div>
           </div>
-          
+
           {/* Visual Background Accents */}
           <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-primary/10 blur-[120px] transition-all duration-700 group-hover:bg-primary/20" />
           <div className="absolute -left-32 -bottom-32 h-96 w-96 rounded-full bg-primary/5 blur-[120px] transition-all duration-700 group-hover:bg-primary/10" />
@@ -72,15 +73,19 @@ export default function Footer() {
 
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="col-span-1 lg:col-span-2">
-            <Link href="/" className="mb-6 flex -ml-1 items-center gap-2 text-2xl font-bold tracking-tight text-white font-heading">
-              <div className="rounded-lg bg-primary p-1 text-white">
-                <Terminal size={24} />
-              </div>
+            <Link href="/" className="mb-6 flex -ml-1 items-center gap-3 text-2xl font-bold tracking-tight text-white font-heading transition-opacity hover:opacity-80">
+              <Image
+                src="/logo.svg"
+                alt="Buildorai Logo"
+                width={32}
+                height={32}
+                className="h-8 w-auto"
+              />
               Buildorai
             </Link>
             <p className="mb-8 max-w-md text-base leading-relaxed text-text-secondary">
-              The AI-powered command center for modern engineering teams. 
-              Automate coordination, optimize scheduling, and scale without limits. 
+              The AI-powered command center for modern engineering teams.
+              Automate coordination, optimize scheduling, and scale without limits.
               GPU-accelerated project intelligence at your fingertips.
             </p>
             <div className="flex gap-6 justify-center sm:justify-start">
@@ -93,23 +98,23 @@ export default function Footer() {
           </div>
 
           <div>
-             <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-white">Product</h4>
-             <ul className="space-y-4 text-base text-text-secondary">
-               <li><Link href="/overview" className="transition-colors hover:text-primary">Platform</Link></li>
-               <li><button className="transition-colors hover:text-primary">Features</button></li>
-               <li><button className="transition-colors hover:text-primary">Pricing</button></li>
-               <li><button className="transition-colors hover:text-primary">API Docs (Coming Soon)</button></li>
-             </ul>
+            <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-white">Product</h4>
+            <ul className="space-y-4 text-base text-text-secondary">
+              <li><Link href="/overview" className="transition-colors hover:text-primary">Platform</Link></li>
+              <li><button className="transition-colors hover:text-primary">Features</button></li>
+              <li><button className="transition-colors hover:text-primary">Pricing</button></li>
+              <li><button className="transition-colors hover:text-primary">API Docs (Coming Soon)</button></li>
+            </ul>
           </div>
 
           <div>
-             <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-white">Legal</h4>
-             <ul className="space-y-4 text-base text-text-secondary">
-               <li><button className="transition-colors hover:text-primary">Privacy Policy</button></li>
-               <li><button className="transition-colors hover:text-primary">Terms of Service</button></li>
-               <li><button className="transition-colors hover:text-primary">Security</button></li>
-               <li><button className="transition-colors hover:text-primary">Contact</button></li>
-             </ul>
+            <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-white">Legal</h4>
+            <ul className="space-y-4 text-base text-text-secondary">
+              <li><button className="transition-colors hover:text-primary">Privacy Policy</button></li>
+              <li><button className="transition-colors hover:text-primary">Terms of Service</button></li>
+              <li><button className="transition-colors hover:text-primary">Security</button></li>
+              <li><button className="transition-colors hover:text-primary">Contact</button></li>
+            </ul>
           </div>
         </div>
 
