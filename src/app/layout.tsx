@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import CookieConsent from "@/components/ui/CookieConsent";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,6 +34,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col overflow-x-hidden overscroll-behavior-x-none">
         {children}
+        <CookieConsent />
         <Script
           id="tawk-chat"
           strategy="lazyOnload"
