@@ -459,17 +459,22 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-white/5 bg-background pt-20 pb-10">
-      <div className="container mx-auto max-w-6xl px-4 text-center sm:text-left">
+    <footer className="relative border-t border-white/5 bg-background pt-20 pb-10 overflow-hidden">
+      {/* Footer Atmospheric Background */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute left-1/2 bottom-0 h-[500px] w-full -translate-x-1/2 rounded-full bg-primary/5 blur-[150px]" />
+      </div>
+
+      <div className="container relative z-10 mx-auto max-w-6xl px-6">
 
         {/* Newsletter Section */}
-        <div className="mb-20 rounded-[2.5rem] border border-white/5 bg-surface/20 p-8 md:p-14 backdrop-blur-sm overflow-hidden relative group">
+        <div className="mb-20 rounded-[2.5rem] border border-white/10 bg-surface/30 p-8 md:p-14 backdrop-blur-md overflow-hidden relative group">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
             <div className="max-w-xl text-center lg:text-left">
               <h3 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl">
                 Stay in the <span className="text-primary italic">Loop</span>
               </h3>
-              <p className="text-base md:text-lg text-text-secondary leading-relaxed max-w-lg">
+              <p className="text-base md:text-lg text-text-secondary leading-relaxed max-w-lg mx-auto lg:mx-0">
                 Join the vanguard of engineering. Get exclusive platform updates and strategic AI coordination insights delivered weekly.
               </p>
             </div>
@@ -486,19 +491,31 @@ export default function Footer() {
                 </div>
               ) : (
                 <>
-                  <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
-                    <input
-                      required
-                      name="email"
-                      type="email"
-                      placeholder="your@email.com"
-                      className="h-16 flex-1 rounded-2xl border border-white/10 bg-background/50 px-6 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm font-medium"
-                    />
+                  <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
+                    <div className="relative flex-1 group/input">
+                      <input
+                        required
+                        name="email"
+                        type="email"
+                        placeholder="your@email.com"
+                        className="h-14 w-full rounded-xl border border-white/10 bg-[#020617]/50 px-6 text-white outline-none ring-primary/20 transition-all focus:border-primary/50 focus:ring-4 backdrop-blur-md font-medium placeholder:text-text-secondary/50 group-hover/input:border-white/20"
+                      />
+                    </div>
                     <button
                       disabled={status === "submitting"}
-                      className="h-16 rounded-2xl bg-primary px-8 font-bold text-white shadow-lg shadow-primary/20 transition-all hover:scale-105 hover:shadow-primary/30 active:scale-95 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="h-14 rounded-xl bg-gradient-to-r from-primary to-blue-600 px-8 font-bold text-white shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] hover:shadow-primary/40 active:scale-95 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
-                      {status === "submitting" ? "Joining..." : "Subscribe"}
+                      {status === "submitting" ? (
+                        <>
+                          <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                          <span>Joining...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Subscribe</span>
+                          <Send size={16} />
+                        </>
+                      )}
                     </button>
                   </form>
                   <p className="mt-4 text-center lg:text-left text-xs text-text-secondary opacity-60">
@@ -516,23 +533,22 @@ export default function Footer() {
           <div className="absolute -left-32 -bottom-32 h-96 w-96 rounded-full bg-primary/5 blur-[120px] transition-all duration-700 group-hover:bg-primary/10" />
         </div>
 
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="col-span-1 lg:col-span-2">
-            <Link href="/" className="mb-2 flex items-center justify-start gap-3 text-2xl font-bold tracking-tight text-white font-heading transition-opacity hover:opacity-80 w-fit">
+        <div className="grid gap-x-8 gap-y-12 grid-cols-2 lg:grid-cols-4 items-start text-left">
+          <div className="col-span-2 lg:col-span-2">
+            <Link href="/" className="mb-6 flex items-center justify-start gap-3 text-2xl font-bold tracking-tight text-white font-heading transition-opacity hover:opacity-80 w-fit">
               <Image
                 src="/logo.svg"
                 alt="Buildorai Logo"
                 width={44}
                 height={44}
-                className="h-12 w-auto"
+                className="h-11 w-auto"
               />
             </Link>
-            <p className="mb-8 max-w-md text-base leading-relaxed text-text-secondary">
+            <p className="mb-8 max-w-md text-sm md:text-base leading-relaxed text-text-secondary pr-4">
               The AI-powered command center for modern engineering teams.
               Automate coordination, optimize scheduling, and scale without limits.
-              GPU-accelerated project intelligence at your fingertips.
             </p>
-            <div className="flex gap-6 justify-center sm:justify-start">
+            <div className="flex gap-6 justify-start">
               <FacebookIcon size={20} />
               <LinkedinIcon size={20} />
               <TwitterXIcon size={20} />
@@ -541,9 +557,9 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
-            <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-white">Quick Links</h4>
-            <ul className="space-y-4 text-base text-text-secondary">
+          <div className="col-span-1">
+            <h4 className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-white">Quick Links</h4>
+            <ul className="space-y-4 text-sm md:text-base text-text-secondary">
               <li><Link href="#home" className="transition-colors hover:text-primary">Home</Link></li>
               <li><Link href="#features" className="transition-colors hover:text-primary">Features</Link></li>
               <li><Link href="#blog" className="transition-colors hover:text-primary">Blog</Link></li>
@@ -551,21 +567,21 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-white">Legal</h4>
-            <ul className="space-y-4 text-base text-text-secondary">
+          <div className="col-span-1">
+            <h4 className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-white">Legal</h4>
+            <ul className="space-y-4 text-sm md:text-base text-text-secondary">
               <li>
-                <button onClick={() => setActiveLegal("privacy")} className="transition-colors hover:text-primary">
+                <button onClick={() => setActiveLegal("privacy")} className="transition-colors hover:text-primary text-left">
                   Privacy Policy
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveLegal("terms")} className="transition-colors hover:text-primary">
+                <button onClick={() => setActiveLegal("terms")} className="transition-colors hover:text-primary text-left">
                   Terms of Service
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveLegal("cookie")} className="transition-colors hover:text-primary">
+                <button onClick={() => setActiveLegal("cookie")} className="transition-colors hover:text-primary text-left">
                   Cookie Policy
                 </button>
               </li>

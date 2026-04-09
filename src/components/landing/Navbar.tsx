@@ -144,14 +144,7 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              <div className="mt-4 grid grid-cols-2 gap-4">
-                <Link
-                  href="/dashboard"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex h-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 font-bold text-white"
-                >
-                  Dashboard
-                </Link>
+              <div className="mt-4 grid grid-cols-1 gap-4">
                 <Link
                   href="/get-started"
                   onClick={() => setMobileMenuOpen(false)}
