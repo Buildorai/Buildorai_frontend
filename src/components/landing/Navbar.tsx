@@ -99,7 +99,7 @@ export default function Navbar() {
         {/* Desktop CTA & Login */}
         <div className="hidden items-center gap-4 lg:flex">
           <Link
-            href="/get-started"
+            href="#"
             className="animated-border-box group relative flex items-center justify-center rounded-full p-[1.5px] hover:scale-105 transition-all duration-300 active:scale-95"
           >
             <div className="animated-border-content px-8 py-2.5 rounded-full text-sm font-bold text-white whitespace-nowrap">
@@ -146,7 +146,7 @@ export default function Navbar() {
               })}
               <div className="mt-4 grid grid-cols-1 gap-4">
                 <Link
-                  href="/get-started"
+                  href="#"
                   onClick={() => setMobileMenuOpen(false)}
                   className="animated-border-box flex h-14 items-center justify-center rounded-2xl p-[1.5px] transition-all duration-300"
                 >

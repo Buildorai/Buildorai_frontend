@@ -59,7 +59,7 @@ export default function Hero() {
               className="flex flex-wrap gap-4"
             >
               <Link
-                href="/overview"
+                href="#"
                 className="group flex h-14 items-center gap-2 rounded-full bg-primary px-8 font-bold text-white transition-all hover:scale-105 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/30"
               >
                 Get Started with Buildorai
