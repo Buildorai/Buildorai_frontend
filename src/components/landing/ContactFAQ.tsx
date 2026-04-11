@@ -104,7 +104,7 @@ export default function ContactFAQ() {
     <section id="contact" className="relative bg-background py-24 md:py-32 overflow-hidden">
       <div className="container mx-auto max-w-7xl px-8 md:px-20">
         <Heading 
-          title={<>Get in Touch & <span className="text-primary">FAQ</span></>}
+          title={<>Questions or <span className="text-primary">Need Assistance?</span></>}
           description="Have questions or ready to start your journey? Our team is here to help you scale your engineering performance."
           badge="Contact & Help"
           align="center"
@@ -239,9 +239,10 @@ export default function ContactFAQ() {
         </div>
         
         {/* Contact Details Cards */}
-        <div className="mt-20 grid gap-6 md:grid-cols-2">
+        <div className="mt-20 grid gap-6 md:grid-cols-3">
           {[
             { icon: <Mail className="text-white" size={24} />, label: "Email Address", value: "help@buildorai.com" },
+            { icon: <Phone className="text-white" size={24} />, label: "Mobile Number", value: "+12703631630" },
             { icon: <MapPin className="text-white" size={24} />, label: "Our Location", value: "One Sansome Street, San Francisco, CA 94104, USA" },
           ].map((item, index) => (
             <motion.div

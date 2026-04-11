@@ -92,7 +92,7 @@ export default function Pricing() {
 
       <div className="container relative z-10 mx-auto max-w-6xl px-4">
         <Heading
-          title={<>Predictable <span className="text-primary">Pricing</span></>}
+          title={<>Plans Built for <span className="text-primary">Performance</span></>}
           description="Simple plans for every scale. Save up to 20% with annual billing."
           badge="Pricing"
         >

@@ -12,15 +12,15 @@ export default function Hero() {
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="/hero-ai.png" 
+          src="/Hero-banner.webp" 
           alt="Engineering Intelligence" 
           fill 
-          className="object-cover opacity-80 brightness-[0.9]"
+          className="object-cover"
           priority
         />
-        {/* Cinematic Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+        {/* Cinematic Overlays - Adjusted to reveal corner designs */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/20 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-40 z-10" />
         
         {/* Animated Glows */}
         <div className="absolute top-1/2 left-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-primary/20 blur-[120px] opacity-50" />
@@ -48,7 +48,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-10 max-w-xl text-lg text-text-secondary md:text-xl leading-relaxed"
             >
-              Transforming project management with secure, decentralized, and intelligent coordination technology. Accelerate your engineering workflows today.
+              Transforming project management through secure, intelligent coordination to accelerate modern workflows.
             </motion.p>
 
             {/* Action Buttons */}
@@ -85,7 +85,7 @@ export default function Hero() {
                 delay: 0.4,
                 y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
               }}
-              className="absolute top-10 right-0 z-20 flex w-64 items-center gap-4 rounded-2xl border border-white/10 bg-background/40 p-4 backdrop-blur-xl shadow-2xl"
+              className="absolute -top-3 right-0 z-20 flex w-64 items-center gap-4 rounded-2xl border border-white/10 bg-background/40 p-4 backdrop-blur-xl shadow-2xl"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20 text-primary">
                 <Cpu size={20} />

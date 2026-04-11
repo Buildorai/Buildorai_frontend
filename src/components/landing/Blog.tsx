@@ -7,49 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Calendar, User, ArrowRight, Share2 } from "lucide-react";
 import Heading from "../ui/Heading";
 
-interface BlogPost {
-  id: number;
-  title: string;
-  category: string;
-  date: string;
-  author: string;
-  image: string;
-  excerpt: string;
-  content: string;
-}
+import { blogs, type BlogPost } from "../../constants/blogData";
 
-const blogs: BlogPost[] = [
-  {
-    id: 1,
-    title: "The Future of Autonomous Engineering Coordination",
-    category: "AI Strategy",
-    date: "May 12, 2026",
-    author: "Dr. Alex Rivera",
-    image: "/blog-neural.png",
-    excerpt: "Exploring how decentralized AI layers are replacing traditional project management overhead in high-velocity teams.",
-    content: "The landscape of engineering coordination is shifting from manual tracking to autonomous neural layers. In this deep dive, we explore how Buildorai's coordination engine identifies project bottlenecks before they occur, allowing teams to focus 100% of their energy on shipping code. By leveraging distributed GPU clusters, we can now simulate thousands of project paths in real-time to find the optimal route to delivery.\n\nKey takeaways include the impact of zero-config integration on team velocity and the shift from predictive to prescriptive project intelligence.",
-  },
-  {
-    id: 2,
-    title: "Scaling Project Velocity with GPU-Accelerated Scheduling",
-    category: "Performance",
-    date: "June 05, 2026",
-    author: "Sarah Chen",
-    image: "/blog-velocity.png",
-    excerpt: "Why traditional CPU-based scheduling is failing modern engineering complexity and how parallel processing changes everything.",
-    content: "Modern software projects are no longer linear; they are complex networks of interdependent micro-services and asynchronous workflows. Using traditional CPU-based scheduling algorithms leads to cascading delays. Our research shows that parallelizing these calculations on dedicated GPU clusters can reduce planning latency by 94%.\n\nThis article breaks down the math behind our 'Neural Scheduler' and provides a roadmap for teams looking to move beyond the Gantt chart era into the era of real-time project synthesis.",
-  },
-  {
-    id: 3,
-    title: "Security Architecture for Decentralized Intelligence",
-    category: "Governance",
-    date: "June 18, 2026",
-    author: "Marcus Thorne",
-    image: "/blog-security.png",
-    excerpt: "Deep-diving into AES-256 encryption and SOC-2 compliance in the age of globally distributed AI workloads.",
-    content: "As project data becomes the lifeblood of AI-driven coordination, security must be baked into the architecture, not bolted on. Buildorai utilizes a multi-layered security perimeter that ensures project telemetry is encrypted at rest and in transit using AES-256 standards.\n\nWe discuss our approach to hardware-level isolation for enterprise tenants and how we maintain SOC-2 Type II compliance while operating a massive, decentralized node network. Privacy isn't a trade-off for intelligence; it's the foundation of it.",
-  },
-];
 
 export default function Blog() {
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
@@ -58,11 +17,15 @@ export default function Blog() {
   React.useEffect(() => {
     if (selectedBlog) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
+
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [selectedBlog]);
 
@@ -79,7 +42,7 @@ export default function Blog() {
 
       <div className="container relative z-10 mx-auto max-w-6xl px-4">
         <Heading 
-          title={<>Intelligence <span className="text-primary italic">Insights</span></>}
+          title={<>AI & Workflow <span className="text-primary italic">Insights</span></>}
           description="Thought leadership at the intersection of AI, hardware optimization, and modern engineering management."
           badge="Blog & Resources"
         />

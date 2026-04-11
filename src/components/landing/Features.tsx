@@ -1,52 +1,58 @@
 // === Landing: FeaturesSection component ===
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { LayoutGrid, Zap, Shield, BarChart3, Database, Globe, ArrowRight } from "lucide-react";
 import Heading from "../ui/Heading";
 
 const features = [
   {
     title: "AI Scheduling Engine",
     description: "Automated project timelines that adapt to team capacity and task dependencies in real-time.",
-    icon: LayoutGrid,
+    icon: "/AI-Scheduling-Engine.svg",
     color: "text-primary",
     bgColor: "bg-primary/10",
+    bgImage: "/AI Scheduling Engine.png",
   },
   {
     title: "Intelligent Workflows",
     description: "Smart task allocation and bottleneck detection using advanced predictive analytics.",
-    icon: Zap,
+    icon: "/Intelligent-Workflows.svg",
     color: "text-success",
     bgColor: "bg-success/10",
+    bgImage: "/Intelligent Workflows.png",
   },
   {
     title: "Secure Enterprise Foundation",
     description: "Built for scale with robust security protocols and role-based access controls.",
-    icon: Shield,
+    icon: "/Secure Enterprise Foundation.svg",
     color: "text-danger",
     bgColor: "bg-danger/10",
+    bgImage: "/Secure Enterprise Foundation.png",
   },
   {
     title: "Real-time Telemetry",
     description: "Comprehensive KPIs and performance metrics visualized through dynamic dashboards.",
-    icon: BarChart3,
+    icon: "/Real-time Telemetry.svg",
     color: "text-warning",
     bgColor: "bg-warning/10",
+    bgImage: "/Real-time Telemetry.png",
   },
   {
     title: "Global Data Core",
     description: "Scalable data architecture ensuring high availability and split-second responsiveness.",
-    icon: Database,
+    icon: "/Global Data Core.svg",
     color: "text-primary-dark",
     bgColor: "bg-primary-dark/10",
+    bgImage: "/Global Data Core.png",
   },
   {
     title: "Edge Deployment",
     description: "Optimized delivery across global networks for a high-performance experience everywhere.",
-    icon: Globe,
+    icon: "/Edge Deployment.svg",
     color: "text-success",
     bgColor: "bg-success/10",
+    bgImage: "/Edge Deployment.png",
   },
 ];
 
@@ -55,8 +61,8 @@ export default function Features() {
     <section id="features" className="bg-surface py-24 md:py-48">
       <div className="container mx-auto max-w-6xl px-4">
         <Heading 
-          title={<>Engineering <span className="text-primary">Intelligence</span></>}
-          description="Powered by a GPU-accelerated AI core, Buildorai delivers unmatched efficiency for modern project coordination."
+          title={<>Advanced Project <span className="text-primary">Controls</span></>}
+          description="Gain full visibility and control over workflows, timelines, and team performance with intelligent automation."
           badge="Features"
         />
 
@@ -74,7 +80,7 @@ export default function Features() {
               <div className="relative h-48 w-full overflow-hidden">
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
-                  style={{ backgroundImage: `url('/feature_bg_blue.png')` }}
+                  style={{ backgroundImage: `url("${feature.bgImage}")` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent" />
                 
@@ -85,8 +91,15 @@ export default function Features() {
 
               {/* Icon Container: Centered on the boundary */}
               <div className="absolute left-10 top-[160px] z-10 mb-5">
-                <div className="flex h-16 w-16 items-center justify-center rounded-[1.2rem] bg-primary text-white shadow-xl scale-100 group-hover:scale-110 transition-transform duration-300 shadow-primary/20">
-                  <feature.icon size={32} strokeWidth={2} />
+                <div className="flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-primary  shadow-xl scale-100 group-hover:scale-110 transition-transform duration-300 shadow-primary/20">
+                  <Image 
+                    src={feature.icon} 
+                    alt={feature.title} 
+                    width={40} 
+                    height={40}
+                    loading="lazy"
+                    className="brightness-0 invert h-11 w-11 object-contain"
+                  />
                 </div>
               </div>
 

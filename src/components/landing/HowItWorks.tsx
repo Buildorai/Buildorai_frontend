@@ -45,7 +45,7 @@ export default function HowItWorks() {
 
       <div className="container relative z-10 mx-auto max-w-7xl px-8 md:px-20">
         <Heading 
-          title={<>Efficiency <span className="text-primary">Demystified</span></>}
+          title={<>How Intelligent Execution <span className="text-primary">Works</span></>}
           description="See how Buildorai transforms complex engineering workflows into a streamlined, autonomous machine."
           badge="How it Works"
         />

@@ -545,8 +545,8 @@ export default function Footer() {
               />
             </Link>
             <p className="mb-8 max-w-md text-sm md:text-base leading-relaxed text-text-secondary pr-4">
-              The AI-powered command center for modern engineering teams.
-              Automate coordination, optimize scheduling, and scale without limits.
+              Accelerate project execution with intelligent scheduling and workflow automation.
+
             </p>
             <div className="flex gap-6 justify-start">
               <FacebookIcon size={20} />
