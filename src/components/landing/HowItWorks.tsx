@@ -96,25 +96,18 @@ export default function HowItWorks() {
             
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-surface shadow-2xl p-2">
               <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-background">
-                <iframe 
-                  width="100%" 
-                  height="100%" 
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                  title="How Buildorai Works Video" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowFullScreen
-                  className="opacity-90 grayscale-[0.5] hover:opacity-100 hover:grayscale-0 transition-all duration-700"
-                ></iframe>
-                
-                {/* Overlay Play UI (Visual only) */}
-                {!false && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-background/20 pointer-events-none group-hover:bg-transparent transition-all">
-                        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/90 text-white shadow-2xl shadow-primary/30">
-                            <Play size={32} fill="currentColor" />
-                        </div>
-                    </div>
-                )}
+                <video 
+                  controls 
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  className="h-full w-full object-cover opacity-90 transition-all duration-700 hover:opacity-100"
+                >
+                  <source src="https://res.cloudinary.com/djttkrmjz/video/upload/q_auto/f_auto/v1775883268/BuildorAi.com_2_oxcvkb.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
             

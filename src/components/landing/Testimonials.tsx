@@ -14,7 +14,7 @@ const testimonials = [
     quote: "Buildorai uncovered critical bottlenecks in our coordination cycle before release, preventing costly delays and ensuring 99.9% sprint predictability.",
     author: "Alex Rivera",
     role: "VP of Engineering",
-    image: "/images/testimonials/vp-engineering.png"
+    image: "/images/testimonials/M1.png"
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const testimonials = [
     quote: "The strategic AI coordination has completely replaced our manual scheduling. Our team spends less time in meetings and more time shipping high-impact code.",
     author: "Sarah Jenkins",
     role: "CTO, DataSync",
-    image: "/images/testimonials/avatar-1.png"
+    image: "/images/testimonials/W1.png"
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const testimonials = [
     quote: "Since integrating Buildorai, our delivery dates have never been more accurate. The AI accurately predicts resource needs and avoids coordination traps.",
     author: "Marcus Chen",
     role: "Lead Architect",
-    image: "/images/testimonials/avatar-2.png"
+    image: "/images/testimonials/M2.png"
   }
 ];
 
@@ -104,9 +104,9 @@ export default function Testimonials() {
               {/* Avatar Stack */}
               <div className="flex items-center gap-6">
                 <div className="flex -space-x-4">
-                  {[1, 2, "vp"].map((id, i) => (
+                  {testimonials.map((testimonial, i) => (
                     <motion.div 
-                      key={id}
+                      key={testimonial.id}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -114,7 +114,7 @@ export default function Testimonials() {
                       className="relative h-14 w-14 rounded-full border-4 border-background overflow-hidden bg-surface"
                     >
                       <Image 
-                        src={`/images/testimonials/${id === 'vp' ? 'vp-engineering' : `avatar-${id}`}.png`}
+                        src={testimonial.image}
                         alt="Customer Avatar"
                         fill
                         className="object-cover"

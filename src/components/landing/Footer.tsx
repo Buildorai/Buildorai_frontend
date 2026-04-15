@@ -422,11 +422,14 @@ export default function Footer() {
   // Lock body scroll when modal is open
   useEffect(() => {
     if (activeLegal) {
+      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
     } else {
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "unset";
     }
     return () => {
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "unset";
     };
   }, [activeLegal]);
@@ -571,17 +574,17 @@ export default function Footer() {
             <h4 className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-white">Legal</h4>
             <ul className="space-y-4 text-sm md:text-base text-text-secondary">
               <li>
-                <button onClick={() => setActiveLegal("privacy")} className="transition-colors hover:text-primary text-left">
+                <button onClick={() => setActiveLegal("privacy")} className="transition-colors hover:text-primary text-left cursor-pointer">
                   Privacy Policy
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveLegal("terms")} className="transition-colors hover:text-primary text-left">
+                <button onClick={() => setActiveLegal("terms")} className="transition-colors hover:text-primary text-left cursor-pointer">
                   Terms of Service
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveLegal("cookie")} className="transition-colors hover:text-primary text-left">
+                <button onClick={() => setActiveLegal("cookie")} className="transition-colors hover:text-primary text-left cursor-pointer">
                   Cookie Policy
                 </button>
               </li>
