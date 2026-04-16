@@ -30,9 +30,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${sora.variable} h-full antialiased overflow-x-hidden selection:bg-primary/30`}
+      className={`${inter.variable} ${sora.variable} h-full antialiased selection:bg-primary/30 scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col overflow-x-hidden overscroll-behavior-x-none">
+      <body className="min-h-full flex flex-col overflow-x-hidden overscroll-behavior-x-none max-w-[100vw]">
         {children}
         <CookieConsent />
         <Script

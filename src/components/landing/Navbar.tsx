@@ -57,12 +57,25 @@ export default function Navbar() {
     };
   }, []);
 
+  // Add scroll lock for mobile menu
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <nav
       className={`fixed top-4 left-1/2 z-[100] w-full max-w-6xl -translate-x-1/2 px-4 transition-all duration-500 ${scrolled ? "top-2" : "top-6"
         }`}
     >
-      <div className={`flex items-center justify-between rounded-full border border-white/10 bg-background/60 p-2 backdrop-blur-xl transition-all duration-500 ${scrolled ? "px-6 py-1.5 shadow-2xl shadow-primary/5" : "px-8 py-2"
+      <div className={`flex items-center justify-between rounded-full border border-white/10 bg-background/60 p-2 backdrop-blur-xl transition-all duration-500 ${scrolled ? "px-4 md:px-6 py-1.5 shadow-2xl shadow-primary/5" : "px-6 md:px-8 py-2"
         }`}>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 text-xl font-bold tracking-tight text-white transition-opacity hover:opacity-80">
@@ -135,7 +148,7 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`rounded-2xl border px-6 py-4 text-center text-lg font-medium transition-all ${
+                    className={`rounded-2xl border px-6 py-3 text-center text-lg font-medium transition-all ${
                       isActive 
                         ? "border-primary/50 bg-primary/10 text-white shadow-inner shadow-primary/10" 
                         : "border-white/5 bg-white/5 text-text-secondary hover:bg-primary/10 hover:text-white"

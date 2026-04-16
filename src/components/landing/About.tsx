@@ -9,19 +9,32 @@ import Heading from "../ui/Heading";
 
 export default function About() {
   return (
-    <section className="relative bg-background py-24 md:py-44 overflow-hidden">
+    <section className="relative bg-background py-16 md:py-44 overflow-hidden">
       {/* Premium Background Layer */}
       <div className="absolute inset-0 z-0">
-        <Image 
-          src="/About Section.png"
-          alt="About Background"
-          fill
-          className="object-cover opacity-85 "
-          priority
-        />
+        {/* Desktop Image Layer */}
+        <div className="hidden lg:block absolute inset-0">
+          <Image 
+            src="/About Section.png"
+            alt="About Background"
+            fill
+            className="object-cover opacity-85"
+            priority
+          />
+        </div>
 
-        {/* Brand Watermark (Subtle) */}
-        
+        {/* Mobile/Tablet Premium Glow Layer */}
+        <div className="lg:hidden absolute inset-0 bg-[#020617] overflow-hidden">
+          {/* Main Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary/15 blur-[120px] opacity-60 animate-pulse" />
+          
+          {/* Accents */}
+          <div className="absolute top-1/4 left-0 h-[300px] w-[300px] bg-primary/10 blur-[100px] rounded-full -translate-x-1/2" />
+          <div className="absolute bottom-1/4 right-0 h-[300px] w-[300px] bg-primary/5 blur-[100px] rounded-full translate-x-1/2" />
+          
+          {/* Radial Mesh */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.1)_0%,transparent_70%)]" />
+        </div>
       </div>
 
       <div className="container relative z-10 mx-auto max-w-6xl px-4 mt-[-40px]">
@@ -29,7 +42,7 @@ export default function About() {
 
           {/* Left Column: Visual Anchor & Trust Bar */}
           <div className="flex flex-col gap-10">
-            <div className="relative group min-h-[480px] flex items-center">
+            <div className="relative group md:min-h-[480px] flex items-center">
               
 
               {/* Floating Stat Badge */}

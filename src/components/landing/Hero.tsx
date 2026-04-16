@@ -9,21 +9,52 @@ import { ArrowRight, Terminal, Activity, Cpu, Globe, Zap } from "lucide-react";
 export default function Hero() {
   return (
     <section id="home" className="relative flex min-h-[100dvh] w-full flex-col pt-32 pb-20 lg:pb-8 overflow-hidden">
-      {/* Background Image Layer */}
+      {/* Background Layers */}
       <div className="absolute inset-0 z-0">
-        <Image 
-          src="/Hero-banner.webp" 
-          alt="Engineering Intelligence" 
-          fill 
-          className="object-cover"
-          priority
-        />
-        {/* Cinematic Overlays - Adjusted to reveal corner designs */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/20 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-40 z-10" />
-        
-        {/* Animated Glows */}
-        <div className="absolute top-1/2 left-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-primary/20 blur-[120px] opacity-50" />
+        {/* Desktop Image Layer */}
+        <div className="hidden lg:block absolute inset-0">
+          <Image 
+            src="/Hero-banner.webp" 
+            alt="Engineering Intelligence" 
+            fill 
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/20 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-40 z-10" />
+          
+          {/* Desktop Premium Glow Overlay */}
+          <div className="absolute inset-0 z-20">
+            {/* Left Headline Glow */}
+            <div className="absolute top-1/2 left-1/4 -translate-y-1/2 h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-primary/15 blur-[160px] opacity-70" />
+            
+            {/* Right Cards Accent Glow */}
+            <div className="absolute top-1/3 right-0 h-[600px] w-[600px] translate-x-1/4 rounded-full bg-primary/10 blur-[140px] opacity-40" />
+            
+            {/* Center Mesh Detail */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(14,165,233,0.1)_0%,transparent_60%)]" />
+          </div>
+        </div>
+
+        {/* Mobile/Tablet Premium Glow Layer */}
+        <div className="lg:hidden absolute inset-0 bg-[#020617] overflow-hidden">
+          {/* Main Glow Center */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/20 blur-[120px] opacity-60 animate-pulse" />
+          
+          {/* Secondary Accents */}
+          <div className="absolute top-0 right-0 h-[400px] w-[400px] bg-primary/10 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 h-[400px] w-[400px] bg-primary/5 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/4" />
+          
+          {/* Radial Mesh */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.15)_0%,transparent_70%)]" />
+          
+          {/* Subtle Grid for high-tech feel */}
+          <div className="absolute inset-0 opacity-[0.03]" 
+               style={{ backgroundImage: 'linear-gradient(rgba(14,165,233,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(14,165,233,0.2) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        </div>
+
+        {/* Universal Animated Glow */}
+        <div className="absolute top-1/2 left-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-primary/20 blur-[120px] opacity-30 md:opacity-50" />
       </div>
 
       <div className="container relative z-10 mx-auto flex max-w-6xl flex-1 items-center px-4">

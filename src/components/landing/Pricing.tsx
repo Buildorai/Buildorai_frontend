@@ -57,7 +57,7 @@ const plans = [
       "Executive Reports",
       "White-glove Onboarding",
     ],
-    cta: "Contact Sales",
+    cta: "Launch Pro Max",
     links: {
       monthly: "https://buy.stripe.com/test_fZuaEW3Iq0GVdjTf7Y5Ne01",
       yearly: "https://buy.stripe.com/test_28E3cu92Kahv7Zz9NE5Ne00",

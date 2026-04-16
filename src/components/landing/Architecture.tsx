@@ -225,7 +225,7 @@ function VortexBase() {
 /* ─── Main component ───────────────────────────────────── */
 export default function Architecture() {
   return (
-    <section className="relative overflow-hidden bg-background py-24 md:py-32">
+    <section className="relative overflow-hidden bg-background py-16 md:py-32">
 
       {/* Background Glow Layers */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -298,7 +298,7 @@ export default function Architecture() {
           </motion.div>
 
           {/* Right Column — SVG diagram */}
-          <div className="relative flex min-h-[430px] items-center justify-center rounded-3xl border border-white/5 bg-surface/20 overflow-hidden backdrop-blur-sm p-4">
+          <div className="relative flex md:min-h-[430px] items-center justify-center rounded-3xl md:border border-white/5 bg-surface/20 overflow-hidden backdrop-blur-sm p-4">
             <svg
               viewBox={`0 0 ${W} ${H}`}
               width="100%"
