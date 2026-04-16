@@ -53,32 +53,55 @@ const BuildorAIProductPage = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative"
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="relative group"
           >
-            <div className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-4 overflow-hidden group">
-              <Image
-                src="/product-hero.png"
-                alt="BuildorAI Robot Interface"
-                width={800}
-                height={800}
-                className="rounded-2xl w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                priority
-              />
+            {/* Background Atmosphere */}
+            <div className="absolute -inset-10 bg-[#0EA5E9]/10 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            
+            <div className="relative rounded-[2.5rem] bg-[#020617] overflow-hidden transform-gpu transition-all duration-700 group-hover:border-[#0EA5E9]/20 group-hover:shadow-[#0EA5E9]/5">
+              {/* Image with Edge Softening Mask */}
+              <div 
+                className="relative h-full w-full"
+                style={{
+                  maskImage: 'radial-gradient(circle at center, black 65%, transparent 100%)',
+                  WebkitMaskImage: 'radial-gradient(circle at center, black 65%, transparent 100%)',
+                }}
+              >
+                <Image
+                  src="/Product-Page-Hero.jpg"
+                  alt="BuildorAI Robot Interface"
+                  width={800}
+                  height={800}
+                  className="rounded-2xl w-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                  priority
+                />
+              </div>
+              
+              {/* Atmospheric Overlays for Blending */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-[#020617]/20 opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-transparent to-transparent opacity-50" />
               
               {/* Floating Status Cards */}
-              <div className="absolute top-8 right-8 bg-[#020617]/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-2xl">
+              <motion.div 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1, duration: 0.8 }}
+                className="absolute top-8 right-8 bg-[#020617]/40 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-2xl transition-all group-hover:translate-x-2"
+              >
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-xs uppercase tracking-wider text-gray-400 font-bold">AI Core Status</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#0EA5E9] font-bold">Neural Engine</span>
                 </div>
-                <div className="font-bold text-sm text-white mt-1">Active & Syncing</div>
-              </div>
+                <div className="font-bold text-sm text-white mt-1">Status: Operational</div>
+              </motion.div>
 
-              {/* Decorative Glow */}
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#0EA5E9]/20 via-transparent to-transparent opacity-50" />
+              
+
+              {/* Decorative Accent Glow */}
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-[#0EA5E9]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           </motion.div>
         </div>
