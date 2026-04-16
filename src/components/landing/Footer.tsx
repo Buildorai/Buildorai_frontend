@@ -541,7 +541,7 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-2">
             <Link href="/" className="flex items-center justify-start gap-3 text-2xl font-bold tracking-tight text-white font-heading transition-opacity hover:opacity-80 w-fit">
               <Image
-                src="/logo.svg"
+                src="/Logo.svg"
                 alt="Buildorai Logo"
                 width={44}
                 height={44}

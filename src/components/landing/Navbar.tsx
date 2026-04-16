@@ -80,7 +80,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 text-xl font-bold tracking-tight text-white transition-opacity hover:opacity-80">
           <Image
-            src="/logo.svg"
+            src="/Logo.svg"
             alt="Buildorai Logo"
             width={44}
             height={44}
