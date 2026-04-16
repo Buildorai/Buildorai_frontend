@@ -59,8 +59,8 @@ export default function Hero() {
               className="flex flex-wrap gap-4"
             >
               <Link
-                href="#"
-                className="group flex h-14 items-center gap-2 rounded-full bg-primary px-8 font-bold text-white transition-all hover:scale-105 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/30"
+                href="/product"
+                className="group flex h-14 items-center gap-2 rounded-full bg-primary px-8 font-bold text-white transition-all hover:scale-105 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/30 duration-700"
               >
                 Get Started with Buildorai
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />

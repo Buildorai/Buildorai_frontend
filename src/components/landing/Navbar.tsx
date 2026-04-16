@@ -8,11 +8,12 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "Features", href: "#features" },
-  { name: "Blog", href: "#blog" },
-  { name: "Pricing", href: "#pricing" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/#home" },
+  { name: "Features", href: "/#features" },
+  { name: "Product", href: "/product" },
+  { name: "Blog", href: "/#blog" },
+  { name: "Pricing", href: "/#pricing" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -99,7 +100,7 @@ export default function Navbar() {
         {/* Desktop CTA & Login */}
         <div className="hidden items-center gap-4 lg:flex">
           <Link
-            href="#"
+            href="/product"
             className="animated-border-box group relative flex items-center justify-center rounded-full p-[1.5px] hover:scale-105 transition-all duration-300 active:scale-95"
           >
             <div className="animated-border-content px-8 py-2.5 rounded-full text-sm font-bold text-white whitespace-nowrap">

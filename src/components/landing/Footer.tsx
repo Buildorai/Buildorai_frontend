@@ -391,7 +391,7 @@ const SocialIcon = ({ path, size = 20, viewBox = "0 0 24 24" }: { path: string, 
 );
 
 const FacebookIcon = (props: any) => <SocialIcon {...props} path="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />;
-const LinkedinIcon = (props: any) => <SocialIcon {...props} path="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" />;
+
 const TwitterXIcon = (props: any) => <SocialIcon {...props} path="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />;
 const YoutubeIcon = (props: any) => <SocialIcon {...props} path="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z M9.75 15.02V8.48L15.45 11.75z" />;
 
@@ -538,7 +538,7 @@ export default function Footer() {
 
         <div className="grid gap-x-8 gap-y-12 grid-cols-2 lg:grid-cols-4 items-start text-left">
           <div className="col-span-2 lg:col-span-2">
-            <Link href="/" className="mb-6 flex items-center justify-start gap-3 text-2xl font-bold tracking-tight text-white font-heading transition-opacity hover:opacity-80 w-fit">
+            <Link href="/" className="flex items-center justify-start gap-3 text-2xl font-bold tracking-tight text-white font-heading transition-opacity hover:opacity-80 w-fit">
               <Image
                 src="/logo.svg"
                 alt="Buildorai Logo"
@@ -552,11 +552,18 @@ export default function Footer() {
 
             </p>
             <div className="flex gap-6 justify-start">
-              <FacebookIcon size={20} />
-              <LinkedinIcon size={20} />
-              <TwitterXIcon size={20} />
-              <PinterestIcon size={20} />
-              <YoutubeIcon size={20} />
+              <a href="https://www.facebook.com/BuildorAi/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <FacebookIcon size={20} />
+              </a>
+              <a href="https://x.com/BuildorAi" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                <TwitterXIcon size={20} />
+              </a>
+              <a href="https://www.pinterest.com/BuildorAI/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                <PinterestIcon size={20} />
+              </a>
+              <a href="https://www.youtube.com/@Buildor-Ai" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <YoutubeIcon size={20} />
+              </a>
             </div>
           </div>
 

@@ -289,7 +289,7 @@ export default function Architecture() {
               ))}
             </ul>
             <Link
-              href="/docs"
+              href="/product"
               className="group inline-flex items-center gap-2 rounded-full bg-surface-hover px-8 py-4 font-bold text-white transition-all hover:bg-white/10 hover:shadow-lg"
             >
               Explore Product
