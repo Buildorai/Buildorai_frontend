@@ -9,16 +9,17 @@ import Heading from "../ui/Heading";
 
 export default function About() {
   return (
-    <section className="relative bg-background py-16 md:py-44 overflow-hidden">
-      {/* Premium Background Layer */}
+    <section className="bg-background py-16 md:pb-24 md:pt-44 overflow-hidden">
+      <section className="relative">
+        {/* Premium Background Layer */}
       <div className="absolute inset-0 z-0">
         {/* Desktop Image Layer */}
         <div className="hidden lg:block absolute inset-0">
-          <Image 
+          <Image
             src="/About Section.png"
             alt="About Background"
             fill
-            className="object-cover opacity-85"
+            className="object-cover object-center opacity-85"
             priority
           />
         </div>
@@ -27,11 +28,11 @@ export default function About() {
         <div className="lg:hidden absolute inset-0 bg-[#020617] overflow-hidden">
           {/* Main Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary/15 blur-[120px] opacity-60 animate-pulse" />
-          
+
           {/* Accents */}
           <div className="absolute top-1/4 left-0 h-[300px] w-[300px] bg-primary/10 blur-[100px] rounded-full -translate-x-1/2" />
           <div className="absolute bottom-1/4 right-0 h-[300px] w-[300px] bg-primary/5 blur-[100px] rounded-full translate-x-1/2" />
-          
+
           {/* Radial Mesh */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.1)_0%,transparent_70%)]" />
         </div>
@@ -43,7 +44,7 @@ export default function About() {
           {/* Left Column: Visual Anchor & Trust Bar */}
           <div className="flex flex-col gap-10">
             <div className="relative group md:min-h-[480px] flex items-center">
-              
+
 
               {/* Floating Stat Badge */}
               <motion.div
@@ -51,7 +52,7 @@ export default function About() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="absolute -right-4 -bottom-20 z-20 hidden md:block"
+                className="absolute -right-6 -bottom-44 z-20 hidden md:block"
               >
                 <div className="relative rounded-3xl border border-white/10 bg-surface/90 p-6 shadow-2xl backdrop-blur-xl">
                   <div className="flex flex-col items-center">
@@ -150,10 +151,11 @@ export default function About() {
                 </motion.div>
               ))}
             </div>
-            
+
           </div>
         </div>
       </div>
+      </section>
     </section>
   );
 }

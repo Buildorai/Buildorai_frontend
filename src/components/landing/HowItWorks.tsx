@@ -105,7 +105,7 @@ export default function HowItWorks() {
                   preload="auto"
                   className="h-full w-full object-cover opacity-90 transition-all duration-700 hover:opacity-100"
                 >
-                  <source src="https://res.cloudinary.com/djttkrmjz/video/upload/q_auto/f_auto/v1775883268/BuildorAi.com_2_oxcvkb.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/dbaqnxlx5/video/upload/q_auto/f_auto/v1776337834/video-final_lmsrjo.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>

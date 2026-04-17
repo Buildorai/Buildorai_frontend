@@ -58,7 +58,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="bg-surface py-24 md:py-48">
+    <section id="features" className="bg-surface py-24 md:pt-48">
       <div className="container mx-auto max-w-6xl px-4">
         <Heading 
           title={<>Advanced Project <span className="text-primary">Controls</span></>}
