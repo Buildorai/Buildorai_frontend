@@ -97,7 +97,7 @@ export default function Hero() {
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
               <Link 
-                href="#how-it-works"
+                href="#process"
                 className="flex h-14 items-center rounded-full border border-white/20 bg-white/5 px-8 font-bold text-white transition-all hover:bg-white/10 backdrop-blur-sm"
               >
                 Watch Demo

@@ -146,7 +146,7 @@ export default function ContactFAQ() {
                       required
                       name="name"
                       type="text" 
-                      placeholder="John Doe"
+                      placeholder="Enter Your Name..."
                       className="w-full rounded-2xl border border-white/10 bg-surface/50 p-4 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm"
                     />
                   </div>
@@ -156,7 +156,7 @@ export default function ContactFAQ() {
                       required
                       name="email"
                       type="email" 
-                      placeholder="john@company.com"
+                      placeholder="Enter Your Email..."
                       className="w-full rounded-2xl border border-white/10 bg-surface/50 p-4 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm"
                     />
                   </div>
@@ -181,7 +181,7 @@ export default function ContactFAQ() {
                     required
                     name="message"
                     rows={4}
-                    placeholder="How can we help scale your engineering performance?"
+                    placeholder="Enter Your Message..."
                     className="w-full rounded-2xl border border-white/10 bg-surface/50 p-4 text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 backdrop-blur-sm resize-none"
                   />
                 </div>

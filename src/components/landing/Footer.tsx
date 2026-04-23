@@ -541,11 +541,11 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-2">
             <Link href="/" className="flex items-center justify-start gap-3 text-2xl font-bold tracking-tight text-white font-heading transition-opacity hover:opacity-80 w-fit">
               <Image
-                src="/Logo.svg"
+                src="/Logo-New.svg"
                 alt="Buildorai Logo"
                 width={44}
                 height={44}
-                className="h-11 w-auto"
+                className="h-8 w-auto md:h-11"
               />
             </Link>
             <p className="mb-8 max-w-md text-sm md:text-base leading-relaxed text-text-secondary pr-4">
@@ -604,7 +604,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-20 border-t border-white/5 pt-10 text-center text-sm text-text-secondary">
-          <p>© {new Date().getFullYear()} Buildorai. All rights reserved. Powered by NVIDIA SDK.</p>
+          <p>© {new Date().getFullYear()} Buildorai. All rights reserved.</p>
         </div>
       </div>
 

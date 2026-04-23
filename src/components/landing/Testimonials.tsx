@@ -12,8 +12,9 @@ const testimonials = [
     stat: "8X",
     metric: "Efficiency Increase",
     quote: "Buildorai uncovered critical bottlenecks in our coordination cycle before release, preventing costly delays and ensuring 99.9% sprint predictability.",
-    author: "Alex Rivera",
-    role: "VP of Engineering",
+    author: "Avery Whitlock",
+    role: "Product Strategy Lead",
+    company: "Noventis Labs",
     image: "/images/testimonials/M1.png"
   },
   {
@@ -21,8 +22,9 @@ const testimonials = [
     stat: "40%",
     metric: "Reduction in Overhead",
     quote: "The strategic AI coordination has completely replaced our manual scheduling. Our team spends less time in meetings and more time shipping high-impact code.",
-    author: "Sarah Jenkins",
-    role: "CTO, DataSync",
+    author: "Caleb Renshaw",
+    role: "Senior Software Architect",
+    company: "Krydonix Technologies",
     image: "/images/testimonials/W1.png"
   },
   {
@@ -30,8 +32,9 @@ const testimonials = [
     stat: "99.9%",
     metric: "Sprint Predictability",
     quote: "Since integrating Buildorai, our delivery dates have never been more accurate. The AI accurately predicts resource needs and avoids coordination traps.",
-    author: "Marcus Chen",
-    role: "Lead Architect",
+    author: "Ethan Holloway",
+    role: "Operations Director",
+    company: "Zerithra Systems",
     image: "/images/testimonials/M2.png"
   }
 ];
@@ -73,26 +76,26 @@ export default function Testimonials() {
       <div className="absolute inset-0 z-0">
         {/* Base dark navy */}
         <div className="absolute inset-0 bg-[#020617]" />
-        
+
         {/* Large fluid blue shapes with overlapping gradients */}
         <div className="absolute -left-[10%] top-[-10%] h-[120%] w-[120%] bg-gradient-to-br from-primary/20 via-[#0369a1]/10 to-transparent" />
-        
+
         {/* Overlapping curved layers using large blurred circles */}
         <div className="absolute -right-1/4 -top-1/4 h-[800px] w-[800px] rounded-full bg-primary/20 blur-[150px] opacity-40 mix-blend-screen" />
         <div className="absolute left-1/4 bottom-[-10%] h-[600px] w-[900px] rounded-[100%] bg-blue-600/10 blur-[130px] opacity-40 transform rotate-12" />
-        
+
         {/* Subtle cyan accent for the "teal-ish" highlights in the image */}
         <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-cyan-500/5 blur-[100px] opacity-30" />
-        
+
         {/* Textured layer for depth */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
       </div>
       <div className="container relative z-10 mx-auto max-w-7xl px-8 md:px-20">
         <div className="grid gap-20 lg:grid-cols-2 items-center">
-          
+
           {/* Left Column: Context & Proof */}
           <div className="space-y-12">
-            <Heading 
+            <Heading
               align="left"
               badge="Success Stories"
               title={<>Results that <span className="text-primary">Speak</span> Volumes.</>}
@@ -105,7 +108,7 @@ export default function Testimonials() {
               <div className="flex items-center gap-6">
                 <div className="flex -space-x-4">
                   {testimonials.map((testimonial, i) => (
-                    <motion.div 
+                    <motion.div
                       key={testimonial.id}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -113,7 +116,7 @@ export default function Testimonials() {
                       transition={{ delay: 0.1 * i }}
                       className="relative h-14 w-14 rounded-full border-4 border-background overflow-hidden bg-surface"
                     >
-                      <Image 
+                      <Image
                         src={testimonial.image}
                         alt="Customer Avatar"
                         fill
@@ -121,7 +124,7 @@ export default function Testimonials() {
                       />
                     </motion.div>
                   ))}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -131,7 +134,7 @@ export default function Testimonials() {
                     +50
                   </motion.div>
                 </div>
-                
+
                 <div className="space-y-1">
                   <div className="flex gap-1 text-primary">
                     {[1, 2, 3, 4, 5].map((s) => (
@@ -150,7 +153,7 @@ export default function Testimonials() {
           <div className="relative">
             {/* Main Card */}
             <div className="relative z-10 rounded-[2.5rem] border border-white/5 bg-surface/30 p-10 md:p-16 backdrop-blur-xl min-h-[500px] flex flex-col justify-center">
-              
+
               {/* Quote Icon (Background) */}
               <div className="absolute right-10 top-10 opacity-5">
                 <Quote size={120} className="text-white fill-white" />
@@ -181,40 +184,55 @@ export default function Testimonials() {
                   </div>
 
                   {/* Author Row */}
-                  <div className="flex items-center justify-between gap-6 flex-wrap">
-                    <div className="flex items-center gap-4">
-                      <div className="relative h-16 w-16 rounded-2xl overflow-hidden border border-white/10">
-                        <Image 
-                          src={current.image}
-                          alt={current.author}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-bold text-white">{current.author}</h4>
-                        <p className="text-sm text-text-secondary">{current.role}</p>
-                      </div>
+                  <div className="flex items-center gap-4">
+                    <div className="relative h-16 w-16 rounded-2xl overflow-hidden border border-white/10">
+                      <Image
+                        src={current.image}
+                        alt={current.author}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
-
-                    {/* Nav Arrows */}
-                    <div className="flex gap-4">
-                      <button 
-                        onClick={handlePrev}
-                        className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all hover:bg-primary hover:border-primary active:scale-95"
-                      >
-                        <ChevronLeft size={20} />
-                      </button>
-                      <button 
-                        onClick={handleNext}
-                        className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all hover:bg-primary hover:border-primary active:scale-95"
-                      >
-                        <ChevronRight size={20} />
-                      </button>
+                    <div>
+                      <h4 className="text-lg font-bold text-white">{current.author}</h4>
+                      <div className="flex flex-col  gap-2 text-sm text-text-secondary">
+                        <span>{current.role}</span>
+                        <div>
+                          <span className="h-1 w-1 rounded-full bg-primary/40" />
+                          <span className="text-primary/80 font-medium">{current.company}</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
+
+              {/* Fixed Bottom Navigation Area */}
+              <div className="mt-12 flex items-center justify-between border-t border-white/5 pt-8">
+                <div className="flex gap-1 text-primary/40">
+                  {testimonials.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`h-1 rounded-full transition-all duration-300 ${i === currentIndex ? "w-8 bg-primary" : "w-2 bg-white/10"}`}
+                    />
+                  ))}
+                </div>
+
+                <div className="flex gap-3">
+                  <button
+                    onClick={handlePrev}
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all hover:bg-primary hover:border-primary active:scale-95"
+                  >
+                    <ChevronLeft size={20} />
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all hover:bg-primary hover:border-primary active:scale-95"
+                  >
+                    <ChevronRight size={20} />
+                  </button>
+                </div>
+              </div>
             </div>
 
             {/* Decorative Orbs */}

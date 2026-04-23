@@ -29,7 +29,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative bg-[#020617] py-24 md:py-32 overflow-hidden">
+    <section id="process" className="relative bg-[#020617] py-24 md:py-32 overflow-hidden">
       {/* Cinematic Blue Gradient Background */}
       <div className="absolute inset-0 z-0">
         {/* Base dark navy */}
@@ -105,7 +105,7 @@ export default function HowItWorks() {
                   preload="auto"
                   className="h-full w-full object-cover opacity-90 transition-all duration-700 hover:opacity-100"
                 >
-                  <source src="https://res.cloudinary.com/dbaqnxlx5/video/upload/q_auto/f_auto/v1776337834/video-final_lmsrjo.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/dbaqnxlx5/video/upload/q_auto/f_auto/v1776928859/BuildorAi_1_tq0gao.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>

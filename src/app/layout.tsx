@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Buildorai - AI-Powered Project Intelligence",
   description: "The AI-powered command center for modern engineering teams. Automate coordination, optimize scheduling, and scale without limits.",
   icons: {
-    icon: "/Favicon-Final.svg",
+    icon: "/Favicon-New.svg",
   },
 };
 

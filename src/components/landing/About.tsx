@@ -9,7 +9,7 @@ import Heading from "../ui/Heading";
 
 export default function About() {
   return (
-    <section className="bg-background py-16 md:pb-24 md:pt-44 overflow-hidden">
+    <section id="about" className="bg-background py-16 md:pb-24 md:pt-44 overflow-hidden">
       <section className="relative">
         {/* Premium Background Layer */}
       <div className="absolute inset-0 z-0">

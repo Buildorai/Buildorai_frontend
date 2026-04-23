@@ -225,7 +225,7 @@ function VortexBase() {
 /* ─── Main component ───────────────────────────────────── */
 export default function Architecture() {
   return (
-    <section className="relative overflow-hidden bg-background py-16 md:py-32">
+    <section id="architecture" className="relative overflow-hidden bg-background py-16 md:py-32">
 
       {/* Background Glow Layers */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
